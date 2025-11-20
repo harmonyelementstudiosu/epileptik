@@ -925,7 +925,12 @@ body .window-button::before {
   border-radius: 1vh;
   transform: scale(.9);
   padding: 1.5vh 1.8vh;
-  position: relative;
+  position: fixed; /* или absolute, в зависимости от контекста */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9); /* Обновлено для учета центрирования */
+  margin: 0;
+  z-index: 1000; /* Установите подходящий z-index */
   overflow: hidden;
   border: 1px solid #5c6995;
 }
@@ -941,6 +946,8 @@ body .window-button::before {
   pointer-events: none;
   border-radius: 1vh;
 }
+
+/* Остальные стили остаются без изменений */
 
 #app .capture-table__col-kills,
 #app .capture-table__col-kills.my,
