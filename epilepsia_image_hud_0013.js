@@ -46,7 +46,7 @@ function AddHud() {
             "active_wanted": "",
             "armour": "",
             "breath": "",
-            "cash": "",
+            "cash": "https://i.imgur.com/1rOwRqJ.png", // Пример иконки доллара (замените на нужную)
             "circle": "",
             "health": "",
             "hunger": "",
@@ -147,6 +147,7 @@ function AddHud() {
       .Old-Fixed-Wanted,
       .Old-Fixed-HudBottom{
       z-index: -1;
+      font-family: Consolas, monospace; /* Изменено: установлен шрифт Consolas */
       }
       #app .hud-radmir-wanted {
         display: none;
@@ -260,51 +261,46 @@ function AddHud() {
        font-family:"GothamPro Black Italic";
        font-style:italic;
        font-size:2.59vh;
-       text-shadow:0 0 .46vh #00000080
+       text-shadow:0 0 .46vh #00000080;
+       font-weight: bold; /* Изменено: деньги - жирный шрифт */
       }
       .Old-Fixed-Cash img{
        margin-right: 13px;
-       margin-top: 1px
+       margin-top: 1px;
+       width: 16px; /* Установлен размер иконки */
+       height: 16px;
       }
       .Old-Fixed-Params__all{
-       margin-top:1vh
+       margin-top:1vh;
+       display: flex; /* Изменено: параметры в одну строку */
+       gap: 10px; /* Отступ между параметрами */
       }
       .Old-Fixed-Param{
        display:flex;
        align-items:center;
-       margin-top:.95vh
+       margin-top:0; /* Изменено: убраны вертикальные отступы */
+       /* Высота каждого параметра немного отличается */
+       padding: 2px 5px;
+       min-height: 20px;
+       max-height: 25px;
       }
       .Old-Fixed-Param.health{
-        margin-top:0;
         margin-left:1.45vh;
       }
       .Old-Fixed-Param.armour,.Old-Param-Values{
        margin-left:.93vh;
       }
+      /* Убраны полосы */
       .Old-Param-Progress,.Old-Progress__Values{
-       width:9.40vh;
-       height:.46vh;
-       background-color:#0000004d;
-       border-radius:.46vh
-      }
-      .Old-Progress__Values{
-       display:flex;
-       justify-content:flex-end
-      }
-      .Old-Progress__Values .circle{
-       width:.85vh;
-       height:.93vh;
-       margin-top:-.25vh;
-       margin-right:-.28vh
+       display: none; /* Скрыто */
       }
       .Old-Param-Values{
-       font-family:"GothamPro Light Italic";
-       font-weight:300;
-       font-style:italic;
+       font-family: Consolas, monospace; /* Изменено: установлен шрифт Consolas */
        color: white;
-       width:3.24vh;
+       width: auto; /* Ширина по содержимому */
        font-size:1.67vh;
-       text-shadow:0 0 .46vh #000000b3
+       text-shadow:0 0 .46vh #000000b3;
+       font-weight: normal; /* Изменено: обычный шрифт для всех кроме денег */
       }
       .Old-Fixed-Freeze_text{
         margin-right:1vh;
@@ -321,24 +317,6 @@ function AddHud() {
       }
       .Old-Fixed-Param.breath{
        margin-left: 3px
-      }
-      .Old-Fixed-Param.health .Old-Progress__Values{
-       background-color: #ed2e2e;
-       box-shadow: #ed2e2e80 0 0 .46vh 0
-      }
-      .Old-Fixed-Param.armour .Old-Progress__Values{
-       background-color: #526ee6;
-       box-shadow: #526ee680 0 0 .46vh 0
-      }
-      .Old-Fixed-Param.hunger .Old-Progress__Values{
-       width: 50%;
-       box-shadow: #ff872e80 0 0 5px 0;
-       background-color: #ff872e
-      }
-      .Old-Fixed-Param.breath .Old-Progress__Values{
-        width: 99%;
-        background-color: #fff;
-        box-shadow: rgba(255, 255, 255, .5) 0 0 5px 0
       }
       .old-param.health .old-param__icon { width: 1.4vh; height: 1.2vh; }
       .old-param.armour .old-param__icon { width: 1.4vh; height: 1.4vh; }
@@ -987,7 +965,7 @@ body .window-button {
   padding: 0 2vh; 
   height: 4vh !important; 
   border-radius: 1vh !important; 
-  border: .1vh solid #ffffff26 !important;
+  border: .1vh solid #ffffff26 !important; 
   background: linear-gradient(145deg, #303030 0%, #383838 50%, #303030 100%) !important;
   position: relative;
   overflow: hidden;
@@ -1000,10 +978,10 @@ body .window-button {
   z-index: 1; 
 } 
 #app .inventory-container__actions { 
-  border-bottom-left-radius: .8vh;
-  border-bottom-right-radius: .8vh;
-  overflow: hidden;
-}
+  border-bottom-left-radius: .8vh; 
+  border-bottom-right-radius: .8vh; 
+  overflow: hidden; 
+} 
 /* ---------- Radial Menu (player-interaction) - PRESERVED ---------- */
 #app .player-interaction__container,
 #app .player-interaction-layer {
@@ -1146,34 +1124,20 @@ body .window-button {
         </div>
         <div class="Old-Fixed-Main">
            <div class="Old-Fixed-Params">
+              <!-- Деньги -->
               <div class="Old-Fixed-Cash"><img src="${oldRadmirConfig.icons.cash}"><span>0</span></div>
+              <!-- Параметры (Здоровье, Броня, Голод) -->
               <div class="Old-Fixed-Params__all">
                  <div class="Old-Fixed-Param health">
                     <img src="${oldRadmirConfig.icons.health}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
                     <span class="Old-Param-Values">100</span>
                  </div>
                  <div class="Old-Fixed-Param armour">
                     <img src="${oldRadmirConfig.icons.armour}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
                     <span class="Old-Param-Values">100</span>
                  </div>
                  <div class="Old-Fixed-Param hunger">
                     <img src="${oldRadmirConfig.icons.hunger}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
-                    <span class="Old-Param-Values">100</span>
-                 </div>
-                 <div class="Old-Fixed-Param breath">
-                    <img src="${oldRadmirConfig.icons.breath}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
                     <span class="Old-Param-Values">100</span>
                  </div>
               </div>
@@ -1347,9 +1311,7 @@ body .window-button {
     function updateParam(paramClass, value) {
         const paramElement = document.querySelector(`.Old-Fixed-Param.${paramClass}`);
         if (paramElement) {
-            const progressBar = paramElement.querySelector(".Old-Progress__Values");
             const valueText = paramElement.querySelector(".Old-Param-Values");
-            progressBar.style.width = `${value}%`;
             valueText.textContent = value;
         }
     }
