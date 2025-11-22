@@ -610,9 +610,9 @@ body #app .hud-radmir-radar__map {
             const inClipEl = document.querySelector(".Ammo-in-clip");
             if (inClipEl) inClipEl.textContent = value;
         },
-                totalAmmo: (value) => {
+        totalAmmo: (value) => {
             const totalAmmoEl = document.querySelector(".Ammo-full");
-            if (totalAmmoEl) totalAmmoEl.textContent = value; // Убран символ "/"
+            if (totalAmmoEl) totalAmmoEl.textContent = " " + value;
         },
         freeze: (value) => {
             const freezeValueEl = document.querySelector(".Old-Fixed-Freeze_value");
