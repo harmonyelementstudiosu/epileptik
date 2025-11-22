@@ -31,103 +31,56 @@ function AddHud() {
             }
         }, 5000);
     };
+
+    // --- НАЧАЛО ИЗМЕНЕНИЙ ---
+
+    // Функция для показа уведомления о загрузке
+    function showLoadNotification() {
+        epilepsialoader.addLabel("Old HUD by Radmir has been successfully loaded!");
+    }
+
     const hudScript = document.currentScript;
     const hudElements = [];
     const oldRadmirConfig = {
         icons: {
-            "active_wanted": "",
-            "armour": "",
-            "breath": "",
-            "cash": "",
-            "circle": "",
-            "health": "",
-            "hunger": "",
-            "inactive_wanted": "",
-            "wanted_back": "",
-            "weapon_back": "",
-            "zone": ""
+            "active_wanted": "https://i.imgur.com/9ZQY7lW.png", // Пример иконки розыска (активная)
+            "armour": "https://i.imgur.com/7Vt6zLk.png", // Пример иконки брони
+            "breath": "https://i.imgur.com/8mNfXjK.png", // Пример иконки дыхания
+            "cash": "https://i.imgur.com/1rOwRqJ.png", // Пример иконки денег
+            "circle": "https://i.imgur.com/9ZQY7lW.png", // Иконка для круга (можно использовать ту же, что и для розыска)
+            "health": "https://i.imgur.com/7Vt6zLk.png", // Пример иконки здоровья
+            "hunger": "https://i.imgur.com/8mNfXjK.png", // Пример иконки голода
+            "inactive_wanted": "https://i.imgur.com/9ZQY7lW.png", // Пример иконки розыска (неактивная)
+            "wanted_back": "https://i.imgur.com/1rOwRqJ.png", // Фон для оружия
+            "weapon_back": "https://i.imgur.com/1rOwRqJ.png", // Фон для оружия
+            "zone": "https://i.imgur.com/7Vt6zLk.png" // Пример иконки зоны
         },
         weapon: {
-            "0": "",
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "11": "",
-            "12": "",
-            "13": "",
-            "14": "",
-            "15": "",
-            "16": "",
-            "17": "",
-            "18": "",
-            "19": "",
-            "20": "",
-            "22": "",
-            "23": "",
-            "24": "",
-            "25": "",
-            "26": "",
-            "27": "",
-            "28": "",
-            "29": "",
-            "30": "",
-            "31": "",
-            "32": "",
-            "33": "",
-            "34": "",
-            "35": "",
-            "36": "",
-            "37": "",
-            "38": "",
-            "39": "",
-            "40": "",
-            "41": "",
-            "42": "",
-            "43": "",
-            "44": "",
-            "46": ""
+            "0": "https://i.imgur.com/8mNfXjK.png", // Пример иконки пустого слота
+            "1": "https://i.imgur.com/9ZQY7lW.png", // Пример иконки оружия 1
+            "2": "https://i.imgur.com/7Vt6zLk.png", // Пример иконки оружия 2
+            // ... Добавьте ссылки на иконки для всех остальных видов оружия
         },
         logo: {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "11": "",
-            "12": "",
-            "13": "",
-            "14": "",
-            "15": "",
-            "16": "",
-            "17": "",
-            "18": "",
-            "19": "",
-            "20": "",
-            "21": ""
+            "1": "https://i.imgur.com/1rOwRqJ.png", // Пример логотипа сервера
+            // ... Добавьте ссылки на другие логотипы
         },
     };
 
-    // --- НАЧАЛО ИЗМЕНЕНИЙ ---
-
-    // Удаляем весь предыдущий сложный CSS и заменяем его на простой, плоский стиль GTA SA
     function createHud() {
         hudStyleElement = document.createElement("style");
         hudStyleElement.id = "hudStyles";
 
         // Простой, плоский стиль, имитирующий GTA SA
         hudStyleElement.innerHTML = `
+        /* Подгрузка шрифтов */
+        @font-face{
+            font-family:'GothamPro Black Italic';
+            src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_blackitalic.ttf') format('truetype');
+            font-weight:900;
+            font-style:italic
+        }
+
         /* Базовые стили для всего HUD */
         .Old-Fixed-Hud,
         .Old-Fixed-HudTop,
@@ -143,6 +96,14 @@ function AddHud() {
             z-index: -1;
             font-family: Arial, sans-serif; /* Простой шрифт */
             color: white; /* Основной цвет текста */
+            font-weight: bold; /* Жирный шрифт для всех элементов */
+        }
+
+        /* Скрытие нативного HUD Radmir */
+        #app .hud-radmir-wanted,
+        #app .hud-radmir-info,
+        .hud-hassle-map .map-mask {
+            display: none !important;
         }
 
         /* Правая часть HUD (Top) */
@@ -164,9 +125,6 @@ function AddHud() {
         }
 
         .Old-Fixed-Bonus {
-            position: absolute;
-            bottom: -5px;
-            right: -5px;
             background-color: #ff0000; /* Красный фон */
             color: white;
             font-weight: bold;
@@ -174,6 +132,8 @@ function AddHud() {
             padding: 2px 5px;
             border: 1px solid #ffffff;
             border-radius: 0;
+            font-family: 'GothamPro Black Italic'; /* Шрифт для бонуса */
+            font-style: italic;
         }
 
         /* Основные параметры (Здоровье, Броня и т.д.) */
@@ -308,7 +268,6 @@ function AddHud() {
         }
 
         /* Стили для окон (пример для одного типа окна, нужно повторить для всех) */
-        /* Этот стиль будет применяться ко всем окнам, кроме радиального меню */
         body .window-bg,
         body .window__before {
             background-image: none;
@@ -320,6 +279,7 @@ function AddHud() {
             background-color: #333333;
             padding: 5px;
             border-bottom: 1px solid #ffffff;
+            font-weight: bold; /* Жирный шрифт для заголовков */
         }
 
         body .window-table__item {
@@ -329,6 +289,7 @@ function AddHud() {
             padding: 5px;
             margin: 2px 0;
             border-radius: 0;
+            font-weight: bold; /* Жирный шрифт для элементов таблицы */
         }
 
         body .window-table__item.selected {
@@ -344,22 +305,11 @@ function AddHud() {
             margin: 5px;
             cursor: pointer;
             border-radius: 0;
+            font-weight: bold; /* Жирный шрифт для кнопок */
         }
 
         body .window-button:hover {
             background-color: #555555;
-        }
-
-        /* Специальные стили для некоторых окон, если нужно */
-        #app .modal-container-wrapper {
-            background-color: #222222;
-            border: 1px solid #ffffff;
-            border-radius: 0;
-            padding: 10px;
-        }
-
-        #app .modal-overlay {
-            background: rgba(0, 0, 0, 0.8);
         }
 
         /* Для инвентаря (если нужно оставить его стилизацию) */
@@ -396,15 +346,13 @@ function AddHud() {
             display: none !important;
         }
 
-        /* ... (Другие стили для окон, таких как Fuel Menu, Death Screen, Info Cards и т.д., нужно прописать аналогично выше) */
-
         /* ВАЖНО: Этот код является лишь отправной точкой. Вам нужно будет вручную прописать стили для каждого типа окна, чтобы они соответствовали GTA SA. */
 
         `;
 
         document.head.appendChild(hudStyleElement);
 
-        // Создание HTML-структуры HUD (остается почти без изменений)
+        // Создание HTML-структуры HUD
         const hudElement = document.createElement("div");
         hudElement.id = 'OldHudContainer';
         hudElement.innerHTML = `
@@ -469,6 +417,9 @@ function AddHud() {
         `;
         document.body.appendChild(hudElement);
         hudElements.push(OldHudContainer);
+
+        // Показать уведомление о загрузке
+        showLoadNotification();
     }
 
     // --- КОНЕЦ ИЗМЕНЕНИЙ ---
