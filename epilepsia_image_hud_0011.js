@@ -175,7 +175,7 @@ function AddHud() {
        margin-right:2vh
       }
       .Old-Fixed-Bonus{
-       background-color: #292929ff;
+       background-color: #404040ff;
        width: 33px;
        height: 33px;
        display: flex;
@@ -390,32 +390,7 @@ function AddHud() {
         left: 11.1620vh;
         bottom: 2.7778vh;
       }
-      #app .hud-radmir-radar__map { 
-  width: 21.9vh !important; 
-  height: 20.9vh !important; 
-  overflow: hidden; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  border-radius: 0; 
-  border: none !important;
-  box-shadow: 0 5px 25px rgba(139, 195, 221, 0.81); /* Ледяная тень */
-}
-body #app .hud-radmir-radar__map { 
-  transition: .3s 
-}
-#app .hud-hassle-map { 
-  width: 32vh !important; 
-  height: 32vh !important 
-}
-#app .hud-radmir-radar__radar { 
-  width: 26.3vh; 
-  border-radius: 0;
-  box-shadow: none;
-}
-#app .hud-radmir-radar { 
-  left: 7.2vh 
-}
+      #app .hud-radmir-radar__map { width: 26.3vh !important; height: 16.9vh !important; overflow: hidden; display: flex; justify-content: center; align-items: center; border-radius: 1vh; border: 0.55vh solid #404040ff !important } body #app .hud-radmir-radar__map { transition: .3s } #app .hud-hassle-map { width: 32vh !important; height: 32vh !important } #app .hud-radmir-radar__radar { width: 26.3vh; border-radius: 2vh } #app .hud-radmir-radar { left: 7.3vh; bottom: 4.03vh }
       body .OLD-RADMIR-logo__bonus {
     background: #000000c5
 }
