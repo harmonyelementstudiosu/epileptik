@@ -126,142 +126,173 @@ function AddHud() {
     function createHud() {
         hudStyleElement = document.createElement("style");
         hudStyleElement.id = "hudStyles";
-        document.getElementById('radmir-hud-money')?.remove();
-// или
-document.getElementById('radmir-hud-money').style.display = 'none';
         hudStyleElement.innerHTML = `
 @font-face{font-family:'GothamPro Light';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_light.ttf') format('truetype');font-weight:300;font-style:normal}@font-face{font-family:'GothamPro Light Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_lightitalic.ttf') format('truetype');font-weight:300;font-style:italic}@font-face{font-family:'GothamPro Regular';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro.ttf') format('truetype');font-weight:400;font-style:normal}@font-face{font-family:'GothamPro Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_italic.ttf') format('truetype');font-weight:400;font-style:italic}@font-face{font-family:'GothamPro Medium';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_medium.ttf') format('truetype');font-weight:500;font-style:normal}@font-face{font-family:'GothamPro Medium Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_mediumitalic.ttf') format('truetype');font-weight:500;font-style:italic}@font-face{font-family:'GothamPro Bold';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bold.ttf') format('truetype');font-weight:700;font-style:normal}@font-face{font-family:'GothamPro Bold Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bolditalic.ttf') format('truetype');font-weight:700;font-style:italic}@font-face{font-family:'GothamPro Black';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_black.ttf') format('truetype');font-weight:900;font-style:normal}@font-face{font-family:'GothamPro Black Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_blackitalic.ttf') format('truetype');font-weight:900;font-style:italic}
       .Old-Fixed-Hud,
-      .Old-Fixed-HudTop,
-      .Old-Fixed-Logo,
-      .Old-Fixed-Main,
-      .Old-Fixed-Params,
-      .Old-Fixed-Cash,
-      .Old-Fixed-Params__all,
-      .Old-Fixed-Param,
-      .Old-Fixed-Weapon,
-      .Old-Fixed-Wanted,
-      .Old-Fixed-HudBottom{
-      z-index: -1;
-      }
-      #app .hud-radmir-wanted {
-        display: none;
-      }
-      body #app .hud-radmir-info {display: none}
-      .hud-hassle-map .map-mask{
-       display: none;
-      }
-      .Old-Fixed-Logo img,.Old-Fixed-HudTop{
-       transform-origin:top right
-      }
-      .Ammo-in-clip{
-       font-family:'GothamPro Bold Italic';
-       font-weight:900;
-       font-style:italic
-      }
-      .Old-Fixed-HudTop{
-       position:absolute;
-       right:1.4vw;
-       top:3.4vh;
-       display:flex;
-       flex-direction:column;
-       align-items:flex-end
-      }
-      .Old-Fixed-Logo{
-       position:relative;
-       margin-bottom:3vh
-      }
+.Old-Fixed-HudTop,
+.Old-Fixed-Logo,
+.Old-Fixed-Main,
+.Old-Fixed-Params,
+.Old-Fixed-Cash,
+.Old-Fixed-Params__all,
+.Old-Fixed-Param,
+.Old-Fixed-Weapon,
+.Old-Fixed-Wanted,
+.Old-Fixed-HudBottom{
+  z-index: -1;
+}
+
+#app .hud-radmir-wanted {
+  display: none;
+}
+
+body #app .hud-radmir-info {
+  display: none;
+}
+
+.hud-hassle-map .map-mask{
+  display: none;
+}
+
+.Old-Fixed-Logo img,
+.Old-Fixed-HudTop{
+  transform-origin: top right;
+}
+
+.Ammo-in-clip{
+  font-family: 'GothamPro Bold Italic';
+  font-weight: 900;
+  font-style: italic;
+}
+
+.Old-Fixed-HudTop{
+  position: absolute;
+  right: 1.4vw;
+  top: 3.4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.Old-Fixed-Logo{
+  position: relative;
+  margin-bottom: 3vh;
+}
+
 /* Лого */
-      .Old-Fixed-Logo img{
-       width:20.52vh;
-       height:6.2vh;
-       margin-right:2vh
-      }
-      .Old-Fixed-Bonus{
-       background-color: #000000ff;
-       width: 33px;
-       height: 33px;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       font-size: 16px;
-       color: #fff;
-       font-weight: 700;
-       position: absolute;
-       bottom: -5px;
-       right: -2px;
-       border-radius: 50%;
-       font-family:"GothamPro Black Italic";
-       font-style:italic;
-       font-size:1.39vh;
-      }
-      .Old-Fixed-Main,.Old-Fixed-Cash,.Wanted_row{
-       align-items:center;
-       display:flex
-      }
-      .Old-Fixed-Main{
-       margin-top:.46vh;
-       margin-right:3.46vh
-      }
-      .Old-Fixed-Weapon{
-       width:16.6vh;
-       height:16.6vh;
-       position:relative;
-       display:flex;
-       justify-content:flex-end;
-       margin-left:-.93vh;
-       margin-right:.46vh
-      }
-      .Ammo-in-clip,.old-param__icon{
-       margin-right:1.11vh
-      }
-      .Old-Fixed-Weapon_back{
-       position:absolute;
-       right:-1.4vh;
-       top:-1.6vh;
-       z-index:-1
-      }
-      .Old-Fixed-Weapon_icon{
-       width:40vh;
-       height:17.6vh
-      }
-      .Old-Fixed-Weapon_ammo{
-       position:absolute;
-       bottom:3.6vh;
-       right:5vh;
-       display:flex;
-       align-items:flex-end;
-       color: #fff;
-      }
-      .Ammo-in-clip{
-       font-size:2.31vh;
-       line-height:1;
-       text-shadow:0 0 .46vh #00000080
-      }
-      .Ammo-full{
-       font-family:'GothamPro Light Italic';
-       font-weight:300;
-       font-style:italic;
-       font-size:1.67vh;
-       text-shadow:0 0 .46vh #000000b3
-      }
-      .Old-Fixed-Params{
-       height:13.5vh;
-       position:relative;
-       z-index:1
-      }
-      .Old-Fixed-Cash{
-       justify-content:flex-end;
-       color: white;
-       font-family:"GothamPro Black Italic";
-       font-style:italic;
-       font-size:2.59vh;
-       text-shadow:0 0 .46vh #00000080
-      }
-      .Old-Fixed-Cash img{
-       margin-right: 13px;
-       margin-top: 1px
-      }
+.Old-Fixed-Logo img{
+  width: 20.52vh;
+  height: 6.2vh;
+  margin-right: 2vh;
+}
+
+.Old-Fixed-Bonus{
+  background-color: #000000ff;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  position: absolute;
+  bottom: -5px;
+  right: -2px;
+  border-radius: 50%;
+  font-family: "GothamPro Black Italic";
+  font-style: italic;
+  font-size: 1.39vh;
+}
+
+.Old-Fixed-Main,
+.Wanted_row{
+  align-items: center;
+  display: flex;
+}
+
+.Old-Fixed-Main{
+  margin-top: .46vh;
+  margin-right: 3.46vh;
+}
+
+.Old-Fixed-Params{
+  height: 13.5vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Стили для блока с деньгами, сдвинутого вправо */
+.Old-Fixed-Cash{
+  position: absolute;
+  /* Увеличенное значение right для сдвига вправо */
+  right: 40vw; /* Вы можете изменить это значение по своему усмотрению */
+  top: 3.4vh; /* Выравнивание по вертикали с остальным HUD'ом */
+  justify-content: flex-end;
+  color: white;
+  font-family: "GothamPro Black Italic";
+  font-style: italic;
+  font-size: 2.59vh;
+  text-shadow: 0 0 .46vh #00000080;
+  /* Убираем display:flex, так как теперь позиционируем отдельно */
+  display: flex;
+  align-items: center;
+}
+
+.Old-Fixed-Cash img{
+  margin-right: 13px;
+  margin-top: 1px;
+}
+
+.Old-Fixed-Weapon{
+  width: 16.6vh;
+  height: 16.6vh;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: -.93vh;
+  margin-right: .46vh;
+}
+
+.Ammo-in-clip,
+.old-param__icon{
+  margin-right: 1.11vh;
+}
+
+.Old-Fixed-Weapon_back{
+  position: absolute;
+  right: -1.4vh;
+  top: -1.6vh;
+  z-index: -1;
+}
+
+.Old-Fixed-Weapon_icon{
+  width: 40vh;
+  height: 17.6vh;
+}
+
+.Old-Fixed-Weapon_ammo{
+  position: absolute;
+  bottom: 3.6vh;
+  right: 5vh;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+}
+
+.Ammo-in-clip{
+  font-size: 2.31vh;
+  line-height: 1;
+  text-shadow: 0 0 .46vh #00000080;
+}
+
+.Ammo-full{
+  font-family: 'GothamPro Light Italic';
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.67vh;
+  text-shadow: 0 0 .46vh #000000b3;
+}
       .Old-Fixed-Params__all{
        margin-top:1vh
       }
