@@ -98,10 +98,18 @@ function AddHud() {
         hudStyleElement = document.createElement("style");
         hudStyleElement.id = "hudStyles";
         hudStyleElement.innerHTML = `
+            /* Скрываем оригинальный HUD Radmir */
+            .hud-radmir-info,
+            .hud-radmir-wanted,
+            .hud-radmir-radar__map,
+            .hud-hassle-map .map-mask {
+                display: none !important;
+            }
+
             .GTA-SA-Hud {
                 position: fixed;
                 top: 10px;
-                left: 10px;
+                right: 10px;
                 font-family: Arial, sans-serif;
                 font-size: 14px;
                 color: white;
