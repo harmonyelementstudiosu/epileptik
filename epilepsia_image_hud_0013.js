@@ -480,6 +480,10 @@ body #app .hud-radmir-radar__map {
              <img src="${oldRadmirConfig.icons.breath}" class="hud-param-icon">
              <span class="hud-param-value">100</span>
           </div>
+          <div class="hud-param-row">
+             <img src="${oldRadmirConfig.icons.cash}" class="hud-param-icon">
+             <span class="hud-param-value">0</span>
+          </div>
       </div>
       `;
       document.body.appendChild(hudElement);
@@ -544,8 +548,7 @@ body #app .hud-radmir-radar__map {
             }
         },
         money: (value) => {
-            const moneyEl = document.querySelector(".Old-Fixed-Cash span");
-            if (moneyEl) moneyEl.textContent = formatNumberWithDots(value);
+            updateParamText("money", value);
         },
         wanted: (value) => {
             updateWanted(value);
@@ -636,12 +639,19 @@ body #app .hud-radmir-radar__map {
             case 'breath':
                 selector = '.hud-params-above-radar .hud-param-row:nth-child(4) .hud-param-value';
                 break;
+            case 'money':
+                selector = '.hud-params-above-radar .hud-param-row:nth-child(5) .hud-param-value';
+                break;
             default:
                 return;
         }
         const valueText = document.querySelector(selector);
         if (valueText) {
-            valueText.textContent = value;
+            if (paramClass === 'money') {
+                valueText.textContent = formatNumberWithDots(value);
+            } else {
+                valueText.textContent = value;
+            }
         }
     }
     function updateWanted(level) {
