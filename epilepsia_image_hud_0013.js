@@ -1,9 +1,11 @@
 function AddHud() {
     let hudStyleElement;
     window.epilepsialoader = window.epilepsialoader || {};
+
     function formatNumberWithDots(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
+
     epilepsialoader.addLabel = function (message) {
         let notificationElement = document.getElementById('epilepsialoader-notification');
         if (!notificationElement) {
@@ -24,7 +26,9 @@ function AddHud() {
             notificationElement.style.textAlign = 'left';
             document.body.appendChild(notificationElement);
         }
+
         notificationElement.textContent = message;
+
         setTimeout(() => {
             if (notificationElement && notificationElement.parentNode) {
                 notificationElement.parentNode.removeChild(notificationElement);
@@ -32,107 +36,98 @@ function AddHud() {
         }, 5000);
     };
 
-    // --- НАЧАЛО ИЗМЕНЕНИЙ ---
-
-    // Функция для показа уведомления о загрузке
-    function showLoadNotification() {
-        epilepsialoader.addLabel("Old HUD by Radmir has been successfully loaded!");
-    }
-
     const hudScript = document.currentScript;
     const hudElements = [];
     const oldRadmirConfig = {
         icons: {
-            "active_wanted": "",
-            "armour": "",
-            "breath": "",
-            "cash": "https://i.imgur.com/1rOwRqJ.png", // Пример иконки доллара (замените на нужную)
-            "circle": "",
-            "health": "",
-            "hunger": "",
-            "inactive_wanted": "",
-            "wanted_back": "",
-            "weapon_back": "",
-            "zone": "" // Убедитесь, что тут правильный путь к изображению
-        },
-        weapon: {
-            "0": "",
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "11": "",
-            "12": "",
-            "13": "",
-            "14": "",
-            "15": "",
-            "16": "",
-            "17": "",
-            "18": "",
-            "19": "",
-            "20": "",
-            "22": "",
-            "23": "",
-            "24": "",
-            "25": "",
-            "26": "",
-            "27": "",
-            "28": "",
-            "29": "",
-            "30": "",
-            "31": "",
-            "32": "",
-            "33": "",
-            "34": "",
-            "35": "",
-            "36": "",
-            "37": "",
-            "38": "",
-            "39": "",
-            "40": "",
-            "41": "",
-            "42": "",
-            "43": "",
-            "44": "",
-            "46": ""
-        },
-        logo: {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "8": "",
-            "9": "",
-            "10": "",
-            "11": "",
-            "12": "",
-            "13": "",
-            "14": "",
-            "15": "",
-            "16": "",
-            "17": "",
-            "18": "",
-            "19": "",
-            "20": "",
-            "21": ""
-        },
-    };
-
+        "active_wanted": "",
+        "armour": "",
+        "breath": "",
+        "cash": "",
+        "circle": "",
+        "health": "",
+        "hunger": "",
+        "inactive_wanted": "",
+        "wanted_back": "",
+        "weapon_back": "",
+        "zone": "" // Убедитесь, что тут правильный путь к изображению
+    },
+    weapon: {
+        "0": "",
+	"1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "11": "",
+        "12": "",
+        "13": "",
+        "14": "",
+        "15": "",
+        "16": "",
+        "17": "",
+        "18": "",
+        "19": "",
+        "20": "",
+        "22": "",
+        "23": "",
+        "24": "",
+        "25": "",
+        "26": "",
+        "27": "",
+        "28": "",
+        "29": "",
+        "30": "",
+        "31": "",
+        "32": "",
+        "33": "",
+        "34": "",
+        "35": "",
+        "36": "",
+        "37": "",
+        "38": "",
+        "39": "",
+        "40": "",
+        "41": "",
+        "42": "",
+        "43": "",
+        "44": "",
+        "46": ""
+    },
+    logo: {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "11": "",
+        "12": "",
+        "13": "",
+        "14": "",
+        "15": "",
+        "16": "",
+        "17": "",
+        "18": "",
+        "19": "",
+        "20": "",
+        "21": ""
+    },
+};
     function createHud() {
         hudStyleElement = document.createElement("style");
         hudStyleElement.id = "hudStyles";
-
-        // --- CSS ---
         hudStyleElement.innerHTML = `
+@font-face{font-family:'GothamPro Light';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_light.ttf') format('truetype');font-weight:300;font-style:normal}@font-face{font-family:'GothamPro Light Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_lightitalic.ttf') format('truetype');font-weight:300;font-style:italic}@font-face{font-family:'GothamPro Regular';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro.ttf') format('truetype');font-weight:400;font-style:normal}@font-face{font-family:'GothamPro Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_italic.ttf') format('truetype');font-weight:400;font-style:italic}@font-face{font-family:'GothamPro Medium';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_medium.ttf') format('truetype');font-weight:500;font-style:normal}@font-face{font-family:'GothamPro Medium Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_mediumitalic.ttf') format('truetype');font-weight:500;font-style:italic}@font-face{font-family:'GothamPro Bold';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bold.ttf') format('truetype');font-weight:700;font-style:normal}@font-face{font-family:'GothamPro Bold Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_bolditalic.ttf') format('truetype');font-weight:700;font-style:italic}@font-face{font-family:'GothamPro Black';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_black.ttf') format('truetype');font-weight:900;font-style:normal}@font-face{font-family:'GothamPro Black Italic';src:url('https://raw.githubusercontent.com/Fonts-Limit/Fonts/refs/heads/main/gothampro_blackitalic.ttf') format('truetype');font-weight:900;font-style:italic}
       .Old-Fixed-Hud,
       .Old-Fixed-HudTop,
       .Old-Fixed-Logo,
@@ -145,7 +140,6 @@ function AddHud() {
       .Old-Fixed-Wanted,
       .Old-Fixed-HudBottom{
       z-index: -1;
-      font-family: Consolas, monospace; /* Изменено: установлен шрифт Consolas */
       }
       #app .hud-radmir-wanted {
         display: none;
@@ -259,28 +253,19 @@ function AddHud() {
        font-family:"GothamPro Black Italic";
        font-style:italic;
        font-size:2.59vh;
-       text-shadow:0 0 .46vh #00000080;
-       font-weight: bold; /* Изменено: деньги - жирный шрифт */
+       text-shadow:0 0 .46vh #00000080
       }
       .Old-Fixed-Cash img{
        margin-right: 13px;
-       margin-top: 1px;
-       width: 16px; /* Установлен размер иконки */
-       height: 16px;
+       margin-top: 1px
       }
       .Old-Fixed-Params__all{
-       margin-top:1vh;
-       display: flex; /* Изменено: параметры в одну строку */
-       gap: 10px; /* Отступ между параметрами */
+       margin-top:1vh
       }
       .Old-Fixed-Param{
        display:flex;
        align-items:center;
-       margin-top:0; /* Изменено: убраны вертикальные отступы */
-       /* Высота каждого параметра немного отличается */
-       padding: 2px 5px;
-       min-height: 20px;
-       max-height: 25px;
+       margin-top:.95vh
       }
       .Old-Fixed-Param.health{
         margin-top:0;
@@ -289,17 +274,30 @@ function AddHud() {
       .Old-Fixed-Param.armour,.Old-Param-Values{
        margin-left:.93vh;
       }
-      /* Убраны полосы */
       .Old-Param-Progress,.Old-Progress__Values{
-       display: none; /* Скрыто */
+       width:9.40vh;
+       height:.46vh;
+       background-color:#0000004d;
+       border-radius:.46vh
+      }
+      .Old-Progress__Values{
+       display:flex;
+       justify-content:flex-end
+      }
+      .Old-Progress__Values .circle{
+       width:.85vh;
+       height:.93vh;
+       margin-top:-.25vh;
+       margin-right:-.28vh
       }
       .Old-Param-Values{
-       font-family: Consolas, monospace; /* Изменено: установлен шрифт Consolas */
+       font-family:"GothamPro Light Italic";
+       font-weight:300;
+       font-style:italic;
        color: white;
-       width: auto; /* Ширина по содержимому */
+       width:3.24vh;
        font-size:1.67vh;
-       text-shadow:0 0 .46vh #000000b3;
-       font-weight: normal; /* Изменено: обычный шрифт для всех кроме денег */
+       text-shadow:0 0 .46vh #000000b3
       }
       .Old-Fixed-Freeze_text{
         margin-right:1vh;
@@ -317,6 +315,24 @@ function AddHud() {
       .Old-Fixed-Param.breath{
        margin-left: 3px
       }
+      .Old-Fixed-Param.health .Old-Progress__Values{
+       background-color: #ed2e2e;
+       box-shadow: #ed2e2e80 0 0 .46vh 0
+      }
+      .Old-Fixed-Param.armour .Old-Progress__Values{
+       background-color: #526ee6;
+       box-shadow: #526ee680 0 0 .46vh 0
+      }
+      .Old-Fixed-Param.hunger .Old-Progress__Values{
+       width: 50%;
+       box-shadow: #ff872e80 0 0 5px 0;
+       background-color: #ff872e
+      }
+      .Old-Fixed-Param.breath .Old-Progress__Values{
+        width: 99%;
+        background-color: #fff;
+        box-shadow: rgba(255, 255, 255, .5) 0 0 5px 0
+      }
       .old-param.health .old-param__icon { width: 1.4vh; height: 1.2vh; }
       .old-param.armour .old-param__icon { width: 1.4vh; height: 1.4vh; }
       .old-param.hunger .old-param__icon { width: .9vh; height: 1.4vh; }
@@ -333,12 +349,14 @@ function AddHud() {
    transform: translateX(-7.2vh);
    margin-top: -0.4vh; /* Ещё более сильное смещение вниз */
 }
+
 .Old-Fixed-Wanted_back {
    position: absolute;
    right: -0.5vh;
    top: 0.2vh;
    z-index: -1;
 }
+
 .Wanted_row img {
    width: 2.1vh;
    height: 2.1vh;
@@ -402,103 +420,6 @@ body #app .hud-radmir-radar__map {
       body .OLD-RADMIR-logo__bonus {
     background: #000000c5
 }
-/* ---------- Radial Menu (player-interaction) - PRESERVED ---------- */
-#app .player-interaction__container,
-#app .player-interaction-layer {
-  background: #494949b9;
-  border: 1px solid #494949b9;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-#app .player-interaction__inner {
-  background: #494949b9 !important;
-  border: 1px solid #494949b9;
-}
-#app .player-interaction__icon,
-#app .player-interaction__icon_active {
-  fill: #e0e0e0 !important;
-}
-#app .player-interaction__title,
-#app .player-interaction__title_active {
-  color: #e0e0e0 !important;
-}
-#app .player-interaction__container {
-  background-image: none !important;
-}
-#app .player-interaction__container::before {
-  display: none !important;
-}
-  #app .capture-table {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); /* Черно-серый градиент */
-    box-shadow: 0 0 5vh 0 rgba(0, 0, 0, 0.3); /* Теневая подсветка */
-    border-radius: 1vh;
-    transform: scale(.9);
-    padding: 1.5vh 1.8vh;
-    position: relative;
-    overflow: hidden;
-}
-#app .capture-table::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.02) 50%, transparent 100%);
-    pointer-events: none;
-    border-radius: 1vh;
-}
-#app .capture-table__col-kills,
-#app .capture-table__col-kills.my,
-#app .capture-table__timer {
-    background: linear-gradient(145deg, #4a4a4a 0%, #666666 50%, #4a4a4a 100%); /* Серый градиент */
-    color: #e0e0e0; /* Светло-серый текст */
-    font-style: normal;
-    font-weight: 900;
-    font-size: 1.8vh;
-    font-family: 'GothamPro Bold';
-    border-radius: .5vh;
-    position: relative;
-    overflow: hidden;
-}
-#app .capture-table__col-kills::before,
-#app .capture-table__col-kills.my::before,
-#app .capture-table__timer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    transition: left 0.3s;
-}
-#app .capture-table__timer {
-    width: 7.5vh;
-    height: 3.7vh;
-}
-#app .capture-table__col-kills {
-    margin: 0;
-    width: 3.5vh;
-    height: 3.5vh;
-}
-#app .capture-table__col .name {
-    font-family: 'GothamPro Bold';
-    font-style: normal;
-    font-weight: 700;
-    text-transform: none;
-    color: #e0e0e0 !important; /* Светло-серый текст */
-}
-#app .capture-table__col-kills.my {
-    margin-right: 1.3vh;
-    margin-left: 0 !important;
-    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important; /* Темно-серый градиент для своего */
-    color: #ffffff !important; /* Белый текст */
-}
-#app .capture-table__col-kills {
-    margin-left: 1.3vh;
-    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important; /* Темно-серый градиент */
-    color: #ffffff !important; /* Белый текст */
-}
 .OLD-RADMIR-green-zone__main {
     position: absolute;
     left: 1.5vh;
@@ -506,18 +427,22 @@ body #app .hud-radmir-radar__map {
     display: flex;
     align-items: center;
 }
+
 .OLD-RADMIR-green-zone__image {
     margin-right: .93vh;
 }
+
 .OLD-RADMIR-green-zone__text {
     color: #e0f7fa00; /* Светло-голубой */
     text-shadow: .28vh .28vh .46vh #00000000;
 }
+
 .OLD-RADMIR-green-zone__text div:first-child {
     font-size: 1.2vh;
     font-weight: 900;
     text-transform: uppercase;
 }
+
 .OLD-RADMIR-green-zone__text div:last-child {
     color: hsla(0, 0%, 100%, 0);
     font-size: 1.11vh;
@@ -525,14 +450,8 @@ body #app .hud-radmir-radar__map {
     margin-top: .46vh;
 }
   body .authorization{background:0 0}#app .authorization{background-image:url();background-size:auto 100vh}
-
-      /* Дополнительное скрытие радара */
-      #app .hud-radmir-radar { display: none !important; }
-      #app .hud-hassle-map { display: none !important; }
       `;
       document.head.appendChild(hudStyleElement);
-
-      // Создание HTML-структуры HUD
       const hudElement = document.createElement("div");
       hudElement.id = 'OldHudContainer';
       hudElement.innerHTML = `
@@ -544,27 +463,35 @@ body #app .hud-radmir-radar__map {
         </div>
         <div class="Old-Fixed-Main">
            <div class="Old-Fixed-Params">
-              <!-- Деньги -->
               <div class="Old-Fixed-Cash"><img src="${oldRadmirConfig.icons.cash}"><span>0</span></div>
-              <!-- Параметры (Здоровье, Броня, Голод) -->
               <div class="Old-Fixed-Params__all">
-                 <!-- Полоса здоровья -->
                  <div class="Old-Fixed-Param health">
-                    <div class="hp-bar" style="width: 80px; height: 15px; background-color: red; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
-                       <span class="Old-Param-Values">100</span>
+                    <img src="${oldRadmirConfig.icons.health}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
                     </div>
+                    <span class="Old-Param-Values">100</span>
                  </div>
-                 <!-- Полоса брони -->
                  <div class="Old-Fixed-Param armour">
-                    <div class="armour-bar" style="width: 80px; height: 15px; background-color: blue; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
-                       <span class="Old-Param-Values">100</span>
+                    <img src="${oldRadmirConfig.icons.armour}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
                     </div>
+                    <span class="Old-Param-Values">100</span>
                  </div>
-                 <!-- Полоса голода -->
                  <div class="Old-Fixed-Param hunger">
-                    <div class="hunger-bar" style="width: 80px; height: 15px; background-color: #FFA500; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
-                       <span class="Old-Param-Values">100</span>
+                    <img src="${oldRadmirConfig.icons.hunger}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
                     </div>
+                    <span class="Old-Param-Values">100</span>
+                 </div>
+                 <div class="Old-Fixed-Param breath">
+                    <img src="${oldRadmirConfig.icons.breath}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
+                    </div>
+                    <span class="Old-Param-Values">100</span>
                  </div>
               </div>
            </div>
@@ -588,13 +515,7 @@ body #app .hud-radmir-radar__map {
       `;
       document.body.appendChild(hudElement);
       hudElements.push(OldHudContainer);
-
-      // Показать уведомление о загрузке
-      showLoadNotification();
     }
-
-    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
-
     const updateFunctions = {
         show: (value) => {
             const hudEl = document.querySelector(".Old-Fixed-Hud");
@@ -617,28 +538,13 @@ body #app .hud-radmir-radar__map {
             });
         },
         health: (value) => {
-            const hpBar = document.querySelector(".hp-bar");
-            if (hpBar) {
-                hpBar.style.width = `${value}%`;
-                const valueText = hpBar.querySelector(".Old-Param-Values");
-                if (valueText) valueText.textContent = value;
-            }
+            updateParam("health", value);
         },
         armour: (value) => {
-            const armourBar = document.querySelector(".armour-bar");
-            if (armourBar) {
-                armourBar.style.width = `${value}%`;
-                const valueText = armourBar.querySelector(".Old-Param-Values");
-                if (valueText) valueText.textContent = value;
-            }
+            updateParam("armour", value);
         },
         hunger: (value) => {
-            const hungerBar = document.querySelector(".hunger-bar");
-            if (hungerBar) {
-                hungerBar.style.width = `${value}%`;
-                const valueText = hungerBar.querySelector(".Old-Param-Values");
-                if (valueText) valueText.textContent = value;
-            }
+            updateParam("hunger", value);
         },
         breath: (value) => {
             const breathWrapper = document.querySelector(".Old-Fixed-Param.breath .Old-Param-Progress")?.parentElement;
@@ -712,14 +618,21 @@ body #app .hud-radmir-radar__map {
                 freezeValueEl.textContent = formattedValue;
             }
         },
+        /*freeze2: () => {
+            const freezeEl = document.querySelector(".Old-Fixed-Freeze");
+            const isVisible = window.interface("Hud").isNewYear;
+            if (freezeEl) {
+                freezeEl.style.display = isVisible ? "" : "none";
+            }
+        },*/
         greenZone: (isVisible) => {
             const greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
             if (greenZoneEl) {
+                // Обновлено: проверяем isVisible, но также убедимся, что display не равно none по умолчанию
                 greenZoneEl.style.display = isVisible ? "" : "none";
             }
         },
     };
-
     function onInfoChange(type, value) {
         setTimeout(() => {
             // loadingNotification не определен в этом фрагменте кода, закомментировано
@@ -740,15 +653,15 @@ body #app .hud-radmir-radar__map {
             }
         });
     }
-
     function updateParam(paramClass, value) {
         const paramElement = document.querySelector(`.Old-Fixed-Param.${paramClass}`);
         if (paramElement) {
+            const progressBar = paramElement.querySelector(".Old-Progress__Values");
             const valueText = paramElement.querySelector(".Old-Param-Values");
+            progressBar.style.width = `${value}%`;
             valueText.textContent = value;
         }
     }
-
     function updateWanted(level) {
         const wantedIcons = document.querySelectorAll(".Wanted_row img");
         wantedIcons.forEach((icon, index) => {
@@ -761,15 +674,16 @@ body #app .hud-radmir-radar__map {
             }
         });
     }
-
     function initializeHudProxy() {
         const checkInterval = setInterval(() => {
             if (typeof window.interface === "function" && window.interface("Hud").info) {
                 clearInterval(checkInterval);
                 const hudInfo = window.interface("Hud").info;
                 const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
+                
                 // Инициализировать greenZoneEl после создания DOM
                 let greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
+
                 window.interface("Hud").info = new Proxy(clonedHudInfo, {
                     set(target, prop, value) {
                         if (target[prop] !== value) {
@@ -787,17 +701,27 @@ body #app .hud-radmir-radar__map {
                     onInfoChange("bonus", bonusValue);
                     window.interface("Hud").bonus = bonusValue;
                 };
+                
+                // window.interface("Hud").showGreenZoneTab = () => { // Пример добавления метода
+                //     if (greenZoneEl) greenZoneEl.style.display = ""; // Показать
+                // };
+                // window.interface("Hud").hideGreenZoneTab = () => { // Пример добавления метода
+                //     if (greenZoneEl) greenZoneEl.style.display = "none"; // Скрыть
+                // };
             }
         }, 100);
     }
-
     initializeHudProxy();
     createHud();
+
     // Принудительно показать элемент ZZ после создания HUD, если он существует
     const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
     if (initialZZElement) {
         initialZZElement.style.display = "block"; // Устанавливаем display на block
+        // Или вызываем функцию greenZone с true, если она должна управлять этим
+        // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
     }
+
     window.onInfoChange = onInfoChange;
     setTimeout(() => {
         hudElements.forEach(el => el.remove());
@@ -808,6 +732,5 @@ body #app .hud-radmir-radar__map {
             hudStyleElement.remove();
         }
     });
-}
-
+  };
 AddHud();
