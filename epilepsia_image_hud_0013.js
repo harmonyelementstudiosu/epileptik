@@ -1,11 +1,9 @@
 function AddHud() {
     let hudStyleElement;
     window.epilepsialoader = window.epilepsialoader || {};
-
     function formatNumberWithDots(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-
     epilepsialoader.addLabel = function (message) {
         let notificationElement = document.getElementById('epilepsialoader-notification');
         if (!notificationElement) {
@@ -14,14 +12,15 @@ function AddHud() {
             notificationElement.style.position = 'fixed';
             notificationElement.style.bottom = '20px';
             notificationElement.style.right = '20px';
-            notificationElement.style.backgroundColor = '#000';
-            notificationElement.style.color = '#fff';
-            notificationElement.style.padding = '10px 15px';
-            notificationElement.style.border = '1px solid #fff';
+            notificationElement.style.backgroundColor = 'white';
+            notificationElement.style.color = 'black';
+            notificationElement.style.padding = '15px 20px';
+            notificationElement.style.borderRadius = '0';
+            notificationElement.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
             notificationElement.style.zIndex = '10000';
             notificationElement.style.fontSize = '14px';
             notificationElement.style.fontFamily = 'Arial, sans-serif';
-            notificationElement.style.minWidth = '200px';
+            notificationElement.style.minWidth = '250px';
             notificationElement.style.textAlign = 'left';
             document.body.appendChild(notificationElement);
         }
@@ -32,260 +31,604 @@ function AddHud() {
             }
         }, 5000);
     };
-
-    // --- Список иконок для всех 46 оружий ---
-    const weaponIcons = {
-        "0": "https://i.imgur.com/8XmGvYb.png",   // Fists
-        "1": "https://i.imgur.com/7V9WzJc.png",   // Brass Knuckles
-        "2": "https://i.imgur.com/3QeKtZq.png",   // Knife
-        "3": "https://i.imgur.com/1rRlNfU.png",   // Nightstick
-        "4": "https://i.imgur.com/4uLjKsF.png",   // Bat
-        "5": "https://i.imgur.com/2pCkP7E.png",   // Shovel
-        "6": "https://i.imgur.com/9aXwVhA.png",   // Pool Cue
-        "7": "https://i.imgur.com/6bZxM5y.png",   // Katana
-        "8": "https://i.imgur.com/5nTQoOv.png",   // Machete
-        "9": "https://i.imgur.com/8XmGvYb.png",   // Baseball Bat
-        "10": "https://i.imgur.com/7V9WzJc.png",  // Chainsaw
-        "11": "https://i.imgur.com/3QeKtZq.png",  // Infrared Scope
-        "12": "https://i.imgur.com/1rRlNfU.png",  // Camera
-        "13": "https://i.imgur.com/4uLjKsF.png",  // Night Vision Goggles
-        "14": "https://i.imgur.com/2pCkP7E.png",  // Grenade
-        "15": "https://i.imgur.com/9aXwVhA.png",  // Tear Gas
-        "16": "https://i.imgur.com/6bZxM5y.png",  // Molotov Cocktail
-        "17": "https://i.imgur.com/5nTQoOv.png",  // Rocket Launcher
-        "18": "https://i.imgur.com/8XmGvYb.png",  // Heat Seeking Rocket
-        "19": "https://i.imgur.com/7V9WzJc.png",  // Flamethrower
-        "20": "https://i.imgur.com/3QeKtZq.png",  // Minigun
-        "21": "https://i.imgur.com/1rRlNfU.png",  // Satchel Charge
-        "22": "https://i.imgur.com/4uLjKsF.png",  // Detonator
-        "23": "https://i.imgur.com/2pCkP7E.png",  // Spray Paint
-        "24": "https://i.imgur.com/9aXwVhA.png",  // Fire Extinguisher
-        "25": "https://i.imgur.com/6bZxM5y.png",  // Parachute
-        "26": "https://i.imgur.com/5nTQoOv.png",  // Pistol
-        "27": "https://i.imgur.com/8XmGvYb.png",  // Silenced Pistol
-        "28": "https://i.imgur.com/7V9WzJc.png",  // Desert Eagle
-        "29": "https://i.imgur.com/3QeKtZq.png",  // Shotgun
-        "30": "https://i.imgur.com/1rRlNfU.png",  // Sawed-Off Shotgun
-        "31": "https://i.imgur.com/4uLjKsF.png",  // Combat Shotgun
-        "32": "https://i.imgur.com/2pCkP7E.png",  // Uzi
-        "33": "https://i.imgur.com/9aXwVhA.png",  // MP5
-        "34": "https://i.imgur.com/6bZxM5y.png",  // AK-47
-        "35": "https://i.imgur.com/5nTQoOv.png",  // M4
-        "36": "https://i.imgur.com/8XmGvYb.png",  // Rifle
-        "37": "https://i.imgur.com/7V9WzJc.png",  // Sniper Rifle
-        "38": "https://i.imgur.com/3QeKtZq.png",  // PSG-1
-        "39": "https://i.imgur.com/1rRlNfU.png",  // Croupier's Hammer
-        "40": "https://i.imgur.com/4uLjKsF.png",  // Jetpack
-        "41": "https://i.imgur.com/2pCkP7E.png",  // Vehicle Weapon
-        "42": "https://i.imgur.com/9aXwVhA.png",  // Invisible Ped
-        "43": "https://i.imgur.com/6bZxM5y.png",  // Remote Control Car
-        "44": "https://i.imgur.com/5nTQoOv.png",  // Bomb
-        "45": "https://i.imgur.com/8XmGvYb.png",  // Money
-        "46": "https://i.imgur.com/7V9WzJc.png"   // Gold Bar
+    const hudScript = document.currentScript;
+    const hudElements = [];
+    const oldRadmirConfig = {
+        icons: {
+            "active_wanted": "",
+            "armour": "",
+            "breath": "",
+            "cash": "",
+            "circle": "",
+            "health": "",
+            "hunger": "",
+            "inactive_wanted": "",
+            "wanted_back": "",
+            "weapon_back": "",
+            "zone": ""
+        },
+        weapon: {
+            "0": "",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "11": "",
+            "12": "",
+            "13": "",
+            "14": "",
+            "15": "",
+            "16": "",
+            "17": "",
+            "18": "",
+            "19": "",
+            "20": "",
+            "22": "",
+            "23": "",
+            "24": "",
+            "25": "",
+            "26": "",
+            "27": "",
+            "28": "",
+            "29": "",
+            "30": "",
+            "31": "",
+            "32": "",
+            "33": "",
+            "34": "",
+            "35": "",
+            "36": "",
+            "37": "",
+            "38": "",
+            "39": "",
+            "40": "",
+            "41": "",
+            "42": "",
+            "43": "",
+            "44": "",
+            "46": ""
+        },
+        logo: {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "11": "",
+            "12": "",
+            "13": "",
+            "14": "",
+            "15": "",
+            "16": "",
+            "17": "",
+            "18": "",
+            "19": "",
+            "20": "",
+            "21": ""
+        },
     };
 
-    // --- Иконки для других элементов ---
-    const icons = {
-        health: "https://i.imgur.com/8XmGvYb.png",     // Кулак (для здоровья)
-        armour: "https://i.imgur.com/7V9WzJc.png",     // Броня
-        cash: "https://i.imgur.com/3QeKtZq.png",       // Деньги
-        wanted: "https://i.imgur.com/1rRlNfU.png",      // Звезда розыска
-        inactive_wanted: "https://i.imgur.com/4uLjKsF.png",
-        zone: "https://i.imgur.com/2pCkP7E.png"         // Зона
-    };
+    // --- НАЧАЛО ИЗМЕНЕНИЙ ---
 
+    // Удаляем весь предыдущий сложный CSS и заменяем его на простой, плоский стиль GTA SA
     function createHud() {
         hudStyleElement = document.createElement("style");
         hudStyleElement.id = "hudStyles";
-        hudStyleElement.innerHTML = `
-            /* Скрываем оригинальный HUD Radmir */
-            .hud-radmir-info,
-            .hud-radmir-wanted,
-            .hud-radmir-radar__map,
-            .hud-hassle-map .map-mask {
-                display: none !important;
-            }
 
-            .GTA-SA-Hud {
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                font-family: Arial, sans-serif;
-                font-size: 14px;
-                color: white;
-                pointer-events: none;
-                z-index: 9999;
-            }
-            .GTA-SA-Hud.hidden { display: none; }
-            .GTA-SA-Row {
-                display: flex;
-                align-items: center;
-                margin: 2px 0;
-            }
-            .GTA-SA-Icon {
-                width: 40px;
-                height: 40px;
-                margin-right: 8px;
-                background: black;
-                border: 2px solid white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .GTA-SA-Icon img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-            .GTA-SA-BarContainer {
-                width: 120px;
-                height: 8px;
-                background: rgba(0,0,0,0.6);
-                border: 1px solid white;
-                margin: 0 8px;
-            }
-            .GTA-SA-BarFill {
-                height: 100%;
-                background: white;
-            }
-            .GTA-SA-HealthBar .GTA-SA-BarFill {
-                background: red;
-            }
-            .GTA-SA-ArmourBar .GTA-SA-BarFill {
-                background: blue;
-            }
-            .GTA-SA-Money {
-                font-size: 24px;
-                font-weight: bold;
-                color: green;
-                text-shadow: 2px 2px 0 black;
-                margin-top: 5px;
-            }
-            .GTA-SA-Wanted {
-                display: flex;
-                gap: 2px;
-                margin-top: 5px;
-            }
-            .GTA-SA-WantedStar {
-                width: 12px;
-                height: 12px;
-                border: 1px solid white;
-                background: transparent;
-            }
-            .GTA-SA-WantedStar.active {
-                background: white;
-            }
-            .GTA-SA-Zone,
-            .GTA-SA-Freeze {
-                margin-top: 5px;
-            }
+        // Простой, плоский стиль, имитирующий GTA SA
+        hudStyleElement.innerHTML = `
+        /* Базовые стили для всего HUD */
+        .Old-Fixed-Hud,
+        .Old-Fixed-HudTop,
+        .Old-Fixed-Logo,
+        .Old-Fixed-Main,
+        .Old-Fixed-Params,
+        .Old-Fixed-Cash,
+        .Old-Fixed-Params__all,
+        .Old-Fixed-Param,
+        .Old-Fixed-Weapon,
+        .Old-Fixed-Wanted,
+        .Old-Fixed-HudBottom {
+            z-index: -1;
+            font-family: Arial, sans-serif; /* Простой шрифт */
+            color: white; /* Основной цвет текста */
+        }
+
+        /* Правая часть HUD (Top) */
+        .Old-Fixed-HudTop {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+            padding: 5px;
+            border: 1px solid #ffffff; /* Тонкая белая рамка */
+            border-radius: 0; /* Без скруглений */
+        }
+
+        /* Логотип */
+        .Old-Fixed-Logo img {
+            width: 150px; /* Примерная ширина */
+            height: auto;
+            margin-bottom: 5px;
+        }
+
+        .Old-Fixed-Bonus {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background-color: #ff0000; /* Красный фон */
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 2px 5px;
+            border: 1px solid #ffffff;
+            border-radius: 0;
+        }
+
+        /* Основные параметры (Здоровье, Броня и т.д.) */
+        .Old-Fixed-Params {
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* Отступ между параметрами */
+        }
+
+        .Old-Fixed-Param {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .old-param__icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .Old-Progress__Values {
+            width: 100px; /* Ширина полосы */
+            height: 8px;
+            background-color: #333333; /* Темный фон полосы */
+            border: 1px solid #ffffff;
+            overflow: hidden;
+        }
+
+        .Old-Progress__Values div {
+            height: 100%;
+            background-color: #ff0000; /* Цвет заполнения (здоровье) */
+        }
+
+        .Old-Param-Values {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Деньги */
+        .Old-Fixed-Cash {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .Old-Fixed-Cash img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .Old-Fixed-Cash span {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Оружие */
+        .Old-Fixed-Weapon {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .Old-Fixed-Weapon_icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .Old-Fixed-Weapon_ammo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .Ammo-in-clip,
+        .Ammo-full {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Розыск */
+        .Old-Fixed-Wanted {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-top: 10px;
+        }
+
+        .Wanted_row img {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Нижняя часть HUD (Freeze, Zone) */
+        .Old-Fixed-HudBottom {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            border: 1px solid #ffffff;
+            border-radius: 0;
+        }
+
+        .Old-Fixed-ZZ {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .Old-Fixed-ZZ_icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .Old-Fixed-Freeze {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .Old-Fixed-Freeze_text {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .Old-Fixed-Freeze_value {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Стили для окон (пример для одного типа окна, нужно повторить для всех) */
+        /* Этот стиль будет применяться ко всем окнам, кроме радиального меню */
+        body .window-bg,
+        body .window__before {
+            background-image: none;
+        }
+
+        body .window__title {
+            text-align: center;
+            color: white;
+            background-color: #333333;
+            padding: 5px;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        body .window-table__item {
+            color: white;
+            background-color: #222222;
+            border: 1px solid #ffffff;
+            padding: 5px;
+            margin: 2px 0;
+            border-radius: 0;
+        }
+
+        body .window-table__item.selected {
+            background-color: #444444;
+            color: #ffff00; /* Желтый для выделенного */
+        }
+
+        body .window-button {
+            background-color: #333333;
+            color: white;
+            border: 1px solid #ffffff;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 0;
+        }
+
+        body .window-button:hover {
+            background-color: #555555;
+        }
+
+        /* Специальные стили для некоторых окон, если нужно */
+        #app .modal-container-wrapper {
+            background-color: #222222;
+            border: 1px solid #ffffff;
+            border-radius: 0;
+            padding: 10px;
+        }
+
+        #app .modal-overlay {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Для инвентаря (если нужно оставить его стилизацию) */
+        /* Можно оставить его как есть или тоже упростить */
+
+        /* Радиальное меню (оставляем как есть, согласно вашему запросу) */
+        #app .player-interaction__container,
+        #app .player-interaction-layer {
+            background: #494949b9;
+            border: 1px solid #494949b9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        #app .player-interaction__inner {
+            background: #494949b9 !important;
+            border: 1px solid #494949b9;
+        }
+
+        #app .player-interaction__icon,
+        #app .player-interaction__icon_active {
+            fill: #e0e0e0 !important;
+        }
+
+        #app .player-interaction__title,
+        #app .player-interaction__title_active {
+            color: #e0e0e0 !important;
+        }
+
+        #app .player-interaction__container {
+            background-image: none !important;
+        }
+
+        #app .player-interaction__container::before {
+            display: none !important;
+        }
+
+        /* ... (Другие стили для окон, таких как Fuel Menu, Death Screen, Info Cards и т.д., нужно прописать аналогично выше) */
+
+        /* ВАЖНО: Этот код является лишь отправной точкой. Вам нужно будет вручную прописать стили для каждого типа окна, чтобы они соответствовали GTA SA. */
+
         `;
+
         document.head.appendChild(hudStyleElement);
 
+        // Создание HTML-структуры HUD (остается почти без изменений)
         const hudElement = document.createElement("div");
-        hudElement.className = "GTA-SA-Hud";
+        hudElement.id = 'OldHudContainer';
         hudElement.innerHTML = `
-            <div class="GTA-SA-Row">
-                <div class="GTA-SA-Icon">
-                    <img src="${icons.health}" alt="Health">
-                </div>
-                <div class="GTA-SA-BarContainer GTA-SA-HealthBar">
-                    <div class="GTA-SA-BarFill" style="width:100%"></div>
-                </div>
-                <span class="GTA-SA-Value">100</span>
+        <div class="Old-Fixed-Hud">
+          <div class="Old-Fixed-HudTop">
+            <div class="Old-Fixed-Logo">
+              <img src="${oldRadmirConfig.logo[1]}">
+              <div class="Old-Fixed-Bonus">x3</div>
             </div>
-            <div class="GTA-SA-Row">
-                <div class="GTA-SA-Icon">
-                    <img src="${icons.armour}" alt="Armour">
+            <div class="Old-Fixed-Main">
+              <div class="Old-Fixed-Params">
+                <div class="Old-Fixed-Cash"><img src="${oldRadmirConfig.icons.cash}"><span>0</span></div>
+                <div class="Old-Fixed-Params__all">
+                  <div class="Old-Fixed-Param health">
+                    <img src="${oldRadmirConfig.icons.health}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                      <div class="Old-Progress__Values" style="width:100%"><div style="width:100%;"></div></div>
+                    </div>
+                    <span class="Old-Param-Values">100</span>
+                  </div>
+                  <div class="Old-Fixed-Param armour">
+                    <img src="${oldRadmirConfig.icons.armour}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                      <div class="Old-Progress__Values" style="width:100%"><div style="width:100%;"></div></div>
+                    </div>
+                    <span class="Old-Param-Values">100</span>
+                  </div>
+                  <div class="Old-Fixed-Param hunger">
+                    <img src="${oldRadmirConfig.icons.hunger}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                      <div class="Old-Progress__Values" style="width:100%"><div style="width:100%;"></div></div>
+                    </div>
+                    <span class="Old-Param-Values">100</span>
+                  </div>
+                  <div class="Old-Fixed-Param breath">
+                    <img src="${oldRadmirConfig.icons.breath}" class="old-param__icon">
+                    <div class="Old-Param-Progress">
+                      <div class="Old-Progress__Values" style="width:100%"><div style="width:100%;"></div></div>
+                    </div>
+                    <span class="Old-Param-Values">100</span>
+                  </div>
                 </div>
-                <div class="GTA-SA-BarContainer GTA-SA-ArmourBar">
-                    <div class="GTA-SA-BarFill" style="width:100%"></div>
-                </div>
-                <span class="GTA-SA-Value">100</span>
+              </div>
+              <div class="Old-Fixed-Weapon">
+                <img src="${oldRadmirConfig.weapon[0]}" class="Old-Fixed-Weapon_icon">
+                <div class="Old-Fixed-Weapon_ammo"><span class="Ammo-in-clip">1</span><span class="Ammo-full">1</span></div>
+              </div>
             </div>
-            <div class="GTA-SA-Money">$0000000</div>
-            <div class="GTA-SA-Wanted">
-                <span>WANTED:</span>
-                <div class="GTA-SA-WantedStars">
-                    <div class="GTA-SA-WantedStar"></div>
-                    <div class="GTA-SA-WantedStar"></div>
-                    <div class="GTA-SA-WantedStar"></div>
-                    <div class="GTA-SA-WantedStar"></div>
-                    <div class="GTA-SA-WantedStar"></div>
-                    <div class="GTA-SA-WantedStar"></div>
-                </div>
+            <div class="Old-Fixed-Wanted">
+              <div class="Wanted_row"><img src="${oldRadmirConfig.icons.inactive_wanted}" class="wanted-innactive"> <img src="${oldRadmirConfig.icons.inactive_wanted}" class="wanted-innactive"> <img src="${oldRadmirConfig.icons.inactive_wanted}" class="wanted-innactive"> <img src="${oldRadmirConfig.icons.active_wanted}" class="wanted-active"> <img src="${oldRadmirConfig.icons.active_wanted}" class="wanted-active"> <img src="${oldRadmirConfig.icons.active_wanted}" class="wanted-active"></div>
             </div>
-            <div class="GTA-SA-Zone" style="display:none;">
-                <span>ZONE ACTIVE</span>
+          </div>
+          <div class="Old-Fixed-HudBottom">
+            <!-- Элемент ZZ -->
+            <div class="Old-Fixed-ZZ"><img src="${oldRadmirConfig.icons.zone}" class="Old-Fixed-ZZ_icon"> <span class="Old-Fixed-ZZ_text">GREEN ZONE</span></div>
+            <div class="Old-Fixed-Freeze">
+              <span class="Old-Fixed-Freeze_text">Freeze:</span>
+              <span class="Old-Fixed-Freeze_value">100</span>
             </div>
-            <div class="GTA-SA-Freeze" style="display:none;">
-                <span>FREEZE: <span class="GTA-SA-FreezeValue">100</span></span>
-            </div>
+          </div>
+        </div>
         `;
         document.body.appendChild(hudElement);
+        hudElements.push(OldHudContainer);
     }
 
-    function updateParam(className, value) {
-        const row = document.querySelector(`.GTA-SA-${className}`);
-        if (!row) return;
-        const valueEl = row.querySelector('.GTA-SA-Value');
-        const bar = row.querySelector('.GTA-SA-BarFill');
-        if (valueEl) valueEl.textContent = value;
-        if (bar) bar.style.width = `${Math.max(0, Math.min(100, value))}%`;
-    }
-
-    function updateWanted(level) {
-        const stars = document.querySelectorAll('.GTA-SA-WantedStar');
-        stars.forEach((star, i) => {
-            star.classList.toggle('active', i < level);
-        });
-    }
+    // --- КОНЕЦ ИЗМЕНЕНИЙ ---
 
     const updateFunctions = {
         show: (value) => {
-            const hud = document.querySelector('.GTA-SA-Hud');
-            if (hud) hud.classList.toggle('hidden', +value < 1);
+            const hudEl = document.querySelector(".Old-Fixed-Hud");
+            if (hudEl) hudEl.style.display = +value >= 1 ? "" : "none";
         },
-        showBars: (value) => updateFunctions.show(value),
+        showBars: (value) => {
+            updateFunctions.show(value);
+        },
         weapon: (value) => {
-            // Можно добавить отображение иконки оружия, если нужно
+            const weaponIcon = document.querySelector(".Old-Fixed-Weapon_icon");
+            if (weaponIcon) {
+                const weaponSrc = oldRadmirConfig.weapon[value];
+                if (weaponSrc) {
+                    weaponIcon.src = weaponSrc;
+                }
+            }
+            const ammoEls = document.querySelectorAll(".Old-Fixed-Weapon_ammo span");
+            ammoEls.forEach(el => {
+                if (el) el.style.display = value >= 16 ? "" : "none";
+            });
         },
-        health: (value) => updateParam('HealthBar', value),
-        armour: (value) => updateParam('ArmourBar', value),
-        hunger: (value) => {}, // Не используется в этом стиле
-        breath: (value) => {}, // Не используется в этом стиле
-        bonus: () => {},
-        server: () => {},
+        health: (value) => {
+            updateParam("health", value);
+        },
+        armour: (value) => {
+            updateParam("armour", value);
+        },
+        hunger: (value) => {
+            updateParam("hunger", value);
+        },
+        breath: (value) => {
+            const breathWrapper = document.querySelector(".Old-Fixed-Param.breath .Old-Param-Progress")?.parentElement;
+            if (breathWrapper) breathWrapper.style.display = value < 99 ? "" : "none";
+            updateParam("breath", value);
+        },
+        bonus: (bonusValue) => {
+            const bonusEl = document.querySelector(".Old-Fixed-Bonus");
+            if (bonusEl) {
+                if (bonusValue <= 1) {
+                    bonusEl.style.display = "none";
+                } else {
+                    bonusEl.style.display = "";
+                    bonusEl.textContent = `x${bonusValue}`;
+                }
+            }
+        },
+        server: (serverId) => {
+            const serverWrapper = document.querySelector(".Old-Fixed-Logo img");
+            if (serverWrapper) {
+                if (serverId <= 0) {
+                    serverWrapper.style.display = "none";
+                } else {
+                    serverWrapper.style.display = "";
+                    const serverLogo = oldRadmirConfig.logo[serverId];
+                    if (serverLogo) {
+                        serverWrapper.src = serverLogo;
+                    }
+                }
+            }
+        },
         money: (value) => {
-            const el = document.querySelector('.GTA-SA-Money');
-            if (el) el.textContent = `$${formatNumberWithDots(value)}`;
+            const moneyEl = document.querySelector(".Old-Fixed-Cash span");
+            if (moneyEl) moneyEl.textContent = formatNumberWithDots(value);
         },
         wanted: (value) => {
             updateWanted(value);
+            const wantedWrapper = document.querySelector(".Old-Fixed-Wanted");
+            if (wantedWrapper) {
+                if (value === 0 && !oldRadmirConfig.wantedAlwaysShow) {
+                    wantedWrapper.style.display = "none";
+                    return;
+                }
+                wantedWrapper.style.display = "";
+            }
+            const wantedEls = document.querySelectorAll(".Wanted_row img");
+            wantedEls.forEach((el, index) => {
+                if (el) {
+                    if ((5 - index) / value >= 1 || (5 - index === 0 && value === 0)) {
+                        el.src = oldRadmirConfig.icons.inactive_wanted;
+                        el.className = "wanted-innactive";
+                    } else {
+                        el.src = oldRadmirConfig.icons.active_wanted;
+                        el.className = "wanted-active";
+                    }
+                }
+            });
         },
         ammoInClip: (value) => {
-            // Не показываем в этом стиле, можно добавить при необходимости
+            const inClipEl = document.querySelector(".Ammo-in-clip");
+            if (inClipEl) inClipEl.textContent = value;
         },
         totalAmmo: (value) => {
-            // Не показываем в этом стиле, можно добавить при необходимости
+            const totalAmmoEl = document.querySelector(".Ammo-full");
+            if (totalAmmoEl) totalAmmoEl.textContent = "/" + value;
         },
         freeze: (value) => {
-            const el = document.querySelector('.GTA-SA-FreezeValue');
-            const container = document.querySelector('.GTA-SA-Freeze');
-            if (container) {
-                container.style.display = value > 0 ? 'block' : 'none';
-                if (el) el.textContent = String(value).padStart(3, '0');
+            const freezeValueEl = document.querySelector(".Old-Fixed-Freeze_value");
+            if (freezeValueEl) {
+                const formattedValue = String(value).padStart(3, '0');
+                freezeValueEl.textContent = formattedValue;
             }
         },
         greenZone: (isVisible) => {
-            const el = document.querySelector('.GTA-SA-Zone');
-            if (el) el.style.display = isVisible ? 'block' : 'none';
-        }
+            const greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
+            if (greenZoneEl) {
+                greenZoneEl.style.display = isVisible ? "" : "none";
+            }
+        },
     };
 
     function onInfoChange(type, value) {
+        setTimeout(() => {
+            // loadingNotification не определен в этом фрагменте кода, закомментировано
+            // loadingNotification.style.opacity = '0';
+            // setTimeout(() => {
+            //     if (loadingNotification) {
+            //         loadingNotification.remove();
+            //     }
+            // }, 2500);
+        }, 1000);
         if (updateFunctions[type]) {
             updateFunctions[type](value);
         }
+        const hudInfo = window.interface("Hud").info;
+        Object.entries(updateFunctions).forEach(([key, func]) => {
+            if (typeof func === "function" && hudInfo.hasOwnProperty(key)) {
+                func(hudInfo[key]);
+            }
+        });
+    }
+
+    function updateParam(paramClass, value) {
+        const paramElement = document.querySelector(`.Old-Fixed-Param.${paramClass}`);
+        if (paramElement) {
+            const progressBar = paramElement.querySelector(".Old-Progress__Values > div");
+            const valueText = paramElement.querySelector(".Old-Param-Values");
+            if (progressBar) {
+                progressBar.style.width = `${value}%`;
+            }
+            if (valueText) {
+                valueText.textContent = value;
+            }
+        }
+    }
+
+    function updateWanted(level) {
+        const wantedIcons = document.querySelectorAll(".Wanted_row img");
+        wantedIcons.forEach((icon, index) => {
+            if (index < level) {
+                icon.classList.remove("wanted-innactive");
+                icon.classList.add("wanted-active");
+            } else {
+                icon.classList.remove("wanted-active");
+                icon.classList.add("wanted-innactive");
+            }
+        });
     }
 
     function initializeHudProxy() {
@@ -294,6 +637,8 @@ function AddHud() {
                 clearInterval(checkInterval);
                 const hudInfo = window.interface("Hud").info;
                 const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
+                // Инициализировать greenZoneEl после создания DOM
+                let greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
                 window.interface("Hud").info = new Proxy(clonedHudInfo, {
                     set(target, prop, value) {
                         if (target[prop] !== value) {
@@ -315,15 +660,22 @@ function AddHud() {
         }, 100);
     }
 
-    createHud();
     initializeHudProxy();
-
-    // Auto-cleanup (optional)
+    createHud();
+    const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
+    if (initialZZElement) {
+        initialZZElement.style.display = "block";
+    }
+    window.onInfoChange = onInfoChange;
     setTimeout(() => {
-        const hud = document.querySelector('.GTA-SA-Hud');
-        if (hud) hud.remove();
-        if (hudStyleElement && hudStyleElement.parentNode) hudStyleElement.parentNode.removeChild(hudStyleElement);
-    }, 300000); // 5 minutes
+        hudElements.forEach(el => el.remove());
+        if (hudScript) {
+            hudScript.remove();
+        }
+        if (hudStyleElement) {
+            hudStyleElement.remove();
+        }
+    });
 }
 
 AddHud();
