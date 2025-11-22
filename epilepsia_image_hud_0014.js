@@ -388,7 +388,7 @@ body #app .hud-radmir-radar__map {
   box-shadow: none;
 }
 #app .hud-radmir-radar { 
-  right: 146.2vh; /* Смещение вправо */
+  right: 142.2vh; /* Смещение вправо */
   left: auto; /* Отмена предыдущего смещения влево */
 }
       body .OLD-RADMIR-logo__bonus {
