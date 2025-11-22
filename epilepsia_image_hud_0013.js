@@ -395,10 +395,10 @@ body #app .hud-radmir-radar__map {
 .hud-params-above-radar {
     position: absolute;
     left: 7.2vh; /* Выравнивание с радаром */
-    top: 280px; /* Положение ещё ниже - на 40px ниже предыдущего */
+    top: 530px; /* Положение ещё ниже - на 250px ниже предыдущего */
     display: flex;
-    flex-direction: column;
-    gap: 8px; /* Расстояние между строками */
+    flex-direction: row; /* Горизонтальное расположение */
+    gap: 20px; /* Расстояние между элементами */
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
     padding: 10px 15px;
