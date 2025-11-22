@@ -274,71 +274,11 @@ function AddHud() {
       .Old-Fixed-Param.armour,.Old-Param-Values{
        margin-left:.93vh;
       }
-      .Old-Param-Progress,.Old-Progress__Values{
-       width:9.40vh;
-       height:.46vh;
-       background-color:#0000004d;
-       border-radius:.46vh
-      }
-      .Old-Progress__Values{
-       display:flex;
-       justify-content:flex-end
-      }
-      .Old-Progress__Values .circle{
-       width:.85vh;
-       height:.93vh;
-       margin-top:-.25vh;
-       margin-right:-.28vh
-      }
-      .Old-Param-Values{
-       font-family:"GothamPro Light Italic";
-       font-weight:300;
-       font-style:italic;
-       color: white;
-       width:3.24vh;
-       font-size:1.67vh;
-       text-shadow:0 0 .46vh #000000b3
-      }
-      .Old-Fixed-Freeze_text{
-        margin-right:1vh;
-      }
-      .Old-Fixed-Freeze_value, .Old-Fixed-Freeze_text{
-       font-family:"GothamPro Bold";
-       font-weight:900;
-       color:#c0ccec;
-       font-size:2vh;
-       text-shadow:0 0 2vh #000
-      }
-      .Old-Fixed-Param.hunger{
-       margin-left: .09vh
-      }
       .Old-Fixed-Param.breath{
        margin-left: 3px
       }
-      .Old-Fixed-Param.health .Old-Progress__Values{
-       background-color: #ed2e2e;
-       box-shadow: #ed2e2e80 0 0 .46vh 0
-      }
-      .Old-Fixed-Param.armour .Old-Progress__Values{
-       background-color: #526ee6;
-       box-shadow: #526ee680 0 0 .46vh 0
-      }
-      .Old-Fixed-Param.hunger .Old-Progress__Values{
-       width: 50%;
-       box-shadow: #ff872e80 0 0 5px 0;
-       background-color: #ff872e
-      }
-      .Old-Fixed-Param.breath .Old-Progress__Values{
-        width: 99%;
-        background-color: #fff;
-        box-shadow: rgba(255, 255, 255, .5) 0 0 5px 0
-      }
-      .old-param.health .old-param__icon { width: 1.4vh; height: 1.2vh; }
-      .old-param.armour .old-param__icon { width: 1.4vh; height: 1.4vh; }
-      .old-param.hunger .old-param__icon { width: .9vh; height: 1.4vh; }
-       position: relative;
-       margin-right: 6vh;
-       margin-top: -1.6vh;
+      .Old-Fixed-Param.hunger{
+       margin-left: .09vh
       }
       .Old-Fixed-Param.breath .old-param__icon{
        width:1.7vh;
@@ -450,7 +390,43 @@ body #app .hud-radmir-radar__map {
     margin-top: .46vh;
 }
   body .authorization{background:0 0}#app .authorization{background-image:url();background-size:auto 100vh}
-      `;
+
+/* Стили для текстовых параметров над радаром */
+.hud-params-above-radar {
+    position: absolute;
+    left: 7.2vh; /* Выравнивание с радаром */
+    top: 115px; /* Положение над радаром */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Расстояние между строками */
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: "GothamPro Regular", Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+.hud-param-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hud-param-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.hud-param-value {
+    font-family: "GothamPro Bold", Arial, sans-serif;
+    font-weight: bold;
+    min-width: 40px; /* Для выравнивания значений */
+    text-align: right;
+}
+  `;
       document.head.appendChild(hudStyleElement);
       const hudElement = document.createElement("div");
       hudElement.id = 'OldHudContainer';
@@ -465,34 +441,7 @@ body #app .hud-radmir-radar__map {
            <div class="Old-Fixed-Params">
               <div class="Old-Fixed-Cash"><img src="${oldRadmirConfig.icons.cash}"><span>0</span></div>
               <div class="Old-Fixed-Params__all">
-                 <div class="Old-Fixed-Param health">
-                    <img src="${oldRadmirConfig.icons.health}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
-                    <span class="Old-Param-Values">100</span>
-                 </div>
-                 <div class="Old-Fixed-Param armour">
-                    <img src="${oldRadmirConfig.icons.armour}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
-                    <span class="Old-Param-Values">100</span>
-                 </div>
-                 <div class="Old-Fixed-Param hunger">
-                    <img src="${oldRadmirConfig.icons.hunger}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
-                    <span class="Old-Param-Values">100</span>
-                 </div>
-                 <div class="Old-Fixed-Param breath">
-                    <img src="${oldRadmirConfig.icons.breath}" class="old-param__icon">
-                    <div class="Old-Param-Progress">
-                       <div class="Old-Progress__Values" style="width:100%"><img src="${oldRadmirConfig.icons.circle}" class="circle"></div>
-                    </div>
-                    <span class="Old-Param-Values">100</span>
-                 </div>
+                 <!-- Пустой блок для параметров, так как они перемещены над радаром -->
               </div>
            </div>
            <div class="Old-Fixed-Weapon">
@@ -512,6 +461,26 @@ body #app .hud-radmir-radar__map {
       <span class="Old-Fixed-Freeze_text">Freeze:</span>
       <span class="Old-Fixed-Freeze_value">100</span>
       </div></div>
+
+      <!-- Блок текстовых параметров над радаром -->
+      <div class="hud-params-above-radar">
+          <div class="hud-param-row">
+             <img src="${oldRadmirConfig.icons.health}" class="hud-param-icon">
+             <span class="hud-param-value">100</span>
+          </div>
+          <div class="hud-param-row">
+             <img src="${oldRadmirConfig.icons.armour}" class="hud-param-icon">
+             <span class="hud-param-value">100</span>
+          </div>
+          <div class="hud-param-row">
+             <img src="${oldRadmirConfig.icons.hunger}" class="hud-param-icon">
+             <span class="hud-param-value">100</span>
+          </div>
+          <div class="hud-param-row">
+             <img src="${oldRadmirConfig.icons.breath}" class="hud-param-icon">
+             <span class="hud-param-value">100</span>
+          </div>
+      </div>
       `;
       document.body.appendChild(hudElement);
       hudElements.push(OldHudContainer);
@@ -538,18 +507,16 @@ body #app .hud-radmir-radar__map {
             });
         },
         health: (value) => {
-            updateParam("health", value);
+            updateParamText("health", value);
         },
         armour: (value) => {
-            updateParam("armour", value);
+            updateParamText("armour", value);
         },
         hunger: (value) => {
-            updateParam("hunger", value);
+            updateParamText("hunger", value);
         },
         breath: (value) => {
-            const breathWrapper = document.querySelector(".Old-Fixed-Param.breath .Old-Param-Progress")?.parentElement;
-            if (breathWrapper) breathWrapper.style.display = value < 99 ? "" : "none";
-            updateParam("breath", value);
+            updateParamText("breath", value);
         },
         bonus: (bonusValue) => {
             const bonusEl = document.querySelector(".Old-Fixed-Bonus");
@@ -653,12 +620,27 @@ body #app .hud-radmir-radar__map {
             }
         });
     }
-    function updateParam(paramClass, value) {
-        const paramElement = document.querySelector(`.Old-Fixed-Param.${paramClass}`);
-        if (paramElement) {
-            const progressBar = paramElement.querySelector(".Old-Progress__Values");
-            const valueText = paramElement.querySelector(".Old-Param-Values");
-            progressBar.style.width = `${value}%`;
+    function updateParamText(paramClass, value) {
+        // Находим элемент по названию параметра
+        let selector;
+        switch(paramClass) {
+            case 'health':
+                selector = '.hud-params-above-radar .hud-param-row:nth-child(1) .hud-param-value';
+                break;
+            case 'armour':
+                selector = '.hud-params-above-radar .hud-param-row:nth-child(2) .hud-param-value';
+                break;
+            case 'hunger':
+                selector = '.hud-params-above-radar .hud-param-row:nth-child(3) .hud-param-value';
+                break;
+            case 'breath':
+                selector = '.hud-params-above-radar .hud-param-row:nth-child(4) .hud-param-value';
+                break;
+            default:
+                return;
+        }
+        const valueText = document.querySelector(selector);
+        if (valueText) {
             valueText.textContent = value;
         }
     }
