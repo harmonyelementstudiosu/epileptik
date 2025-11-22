@@ -550,19 +550,19 @@ body #app .hud-radmir-radar__map {
               <div class="Old-Fixed-Params__all">
                  <!-- Полоса здоровья -->
                  <div class="Old-Fixed-Param health">
-                    <div class="hp-bar" style="width: 40px; height: 15px; background-color: red; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
+                    <div class="hp-bar" style="width: 80px; height: 15px; background-color: red; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
                        <span class="Old-Param-Values">100</span>
                     </div>
                  </div>
                  <!-- Полоса брони -->
                  <div class="Old-Fixed-Param armour">
-                    <div class="armour-bar" style="width: 40px; height: 15px; background-color: blue; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
+                    <div class="armour-bar" style="width: 80px; height: 15px; background-color: blue; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
                        <span class="Old-Param-Values">100</span>
                     </div>
                  </div>
                  <!-- Полоса голода -->
                  <div class="Old-Fixed-Param hunger">
-                    <div class="hunger-bar" style="width: 40px; height: 15px; background-color: #FFA500; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
+                    <div class="hunger-bar" style="width: 80px; height: 15px; background-color: #FFA500; border: 3px solid black; display: flex; align-items: center; justify-content: center; color: white; font-family: Consolas, monospace; font-size: 12px;">
                        <span class="Old-Param-Values">100</span>
                     </div>
                  </div>
