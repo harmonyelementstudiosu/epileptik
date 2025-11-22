@@ -395,7 +395,7 @@ body #app .hud-radmir-radar__map {
 .hud-params-above-radar {
     position: absolute;
     left: 7.2vh; /* Выравнивание с радаром */
-    top: 115px; /* Положение над радаром */
+    top: 180px; /* Положение ещё ниже над радаром */
     display: flex;
     flex-direction: column;
     gap: 8px; /* Расстояние между строками */
