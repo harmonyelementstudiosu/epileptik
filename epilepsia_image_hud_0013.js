@@ -222,19 +222,18 @@ body #app .hud-radmir-info {
   z-index: 1;
 }
 
-/* Стили для блока с деньгами, сдвинутого вправо */
+/* Стили для блока с деньгами, сдвинутого вправо в 5 раз сильнее */
 .Old-Fixed-Cash{
   position: absolute;
-  /* Увеличенное значение right для сдвига вправо */
-  right: 40vw; /* Вы можете изменить это значение по своему усмотрению */
-  top: 3.4vh; /* Выравнивание по вертикали с остальным HUD'ом */
+  /* Увеличенное значение right в 5 раз (40vw * 5 = 200vw) */
+  right: 200vw;
+  top: 3.4vh;
   justify-content: flex-end;
   color: white;
   font-family: "GothamPro Black Italic";
   font-style: italic;
   font-size: 2.59vh;
   text-shadow: 0 0 .46vh #00000080;
-  /* Убираем display:flex, так как теперь позиционируем отдельно */
   display: flex;
   align-items: center;
 }
