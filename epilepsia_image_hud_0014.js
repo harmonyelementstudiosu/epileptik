@@ -162,7 +162,7 @@ body #app .hud-radmir-info {
 .Ammo-in-clip{
   font-family: 'GothamPro Regular';
   font-weight: 900;
-  font-style: Arial;
+  font-style: Arial, sans-serif;
 }
 
 .Old-Fixed-HudTop{
