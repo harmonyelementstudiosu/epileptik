@@ -443,7 +443,7 @@ body #app .hud-radmir-radar__map {
     flex-direction: row; /* Горизонтальное расположение */
     gap: 20px; /* Расстояние между элементами */
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 1); /* Темный полупрозрачный фон */
+    background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
     padding: 10px 15px;
     border-radius: 8px;
     font-family: "GothamPro Regular", Arial, sans-serif;
