@@ -378,10 +378,92 @@ body #app .hud-radmir-info {
   outline-offset: 2px; /* Отступ внешней обводки от края элемента */
   /* Внутренняя тень, имитирующая внутреннюю обводку */
   box-shadow: 
-    0 0px 25px rgba(0, 0, 0, 0.81), /* Ваша текущая тень */
+    0 8px 25px rgba(0, 0, 0, 0.81), /* Ваша текущая тень */
     inset 0 0 0 7px #000000ff; /* Внутренняя обводка (цвет и толщина) */
 }
+/* Основной контейнер модального окна */
+#app .modal-container-wrapper {
+  background: #000000 !important;
+  border: 2px solid #333333;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 10px;
+  width: 300px;
+  max-width: 90%;
+}
 
+/* Заголовок меню */
+#app .modal-container-wrapper h3 {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Таблица оружия */
+#app .weapon-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+#app .weapon-list th,
+#app .weapon-list td {
+  padding: 5px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#app .weapon-list th {
+  font-weight: bold;
+  border-bottom: 1px solid #666;
+}
+
+/* Выделенная строка (например, Deagle) */
+#app .weapon-list tr.selected {
+  background-color: #800000;
+  color: #ffffff;
+}
+
+/* Кнопки внизу */
+#app .modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+#app .modal-button {
+  background: #000000;
+  border: 2px solid #333333;
+  color: #ffffff;
+  padding: 5px 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  min-width: 80px;
+}
+
+#app .modal-button:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+/* Для мобильных устройств — упрощаем, но сохраняем стиль */
+@media (max-width: 768px) {
+  #app .modal-container-wrapper {
+    width: 90%;
+    font-size: 12px;
+    padding: 8px;
+  }
+  
+  #app .modal-button {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
 body #app .hud-radmir-radar__map { 
   transition: .3s 
 }
