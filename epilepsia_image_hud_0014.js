@@ -328,6 +328,13 @@ body #app .hud-radmir-info {
 .Old-Fixed-Wanted {
    position: relative;
    transform: translate(-154.2vh, 36.1vh); /* X, Y */
+   background-color: rgba(0, 0, 0, 0.7);
+   padding: 10px 15px;
+   border-radius: 8px;
+   font-family: "GothamPro Regular", Arial, sans-serif;
+   font-size: 14px;
+   color: white;
+   display: inline-block; /* или block, в зависимости от контекста */
 }
 
 .Old-Fixed-Wanted_back {
