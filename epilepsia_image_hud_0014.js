@@ -373,20 +373,30 @@ body #app .hud-radmir-info {
   align-items: center; 
   border-radius: 0; 
   border: none !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.81);
+  /* Внешняя обводка (outline) */
+  outline: 4px solid #000000ff; /* Цвет и толщина внешней обводки */
+  outline-offset: 2px; /* Отступ внешней обводки от края элемента */
+  /* Внутренняя тень, имитирующая внутреннюю обводку */
+  box-shadow: 
+    0 0px 25px rgba(0, 0, 0, 0.81), /* Ваша текущая тень */
+    inset 0 0 0 7px #910000ff; /* Внутренняя обводка (цвет и толщина) */
 }
+
 body #app .hud-radmir-radar__map { 
   transition: .3s 
 }
+
 #app .hud-hassle-map { 
   width: 38.4vh !important; 
   height: 38.4vh !important 
 }
+
 #app .hud-radmir-radar__radar { 
   width: 31.6vh;
   border-radius: 0;
   box-shadow: none;
 }
+
 #app .hud-radmir-radar { 
   right: 142.2vh; /* Смещение вправо */
   left: auto; /* Отмена предыдущего смещения влево */
