@@ -327,7 +327,7 @@ body #app .hud-radmir-info {
       }
 .Old-Fixed-Wanted {
    position: relative;
-   transform: translate(-30.2vh, -0.4vh); /* X, Y */
+   transform: translate(-200.2vh, -0.4vh); /* X, Y */
 }
 
 .Old-Fixed-Wanted_back {
