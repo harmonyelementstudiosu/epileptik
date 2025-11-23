@@ -293,7 +293,7 @@ body #app .hud-radmir-info {
 }
 
 .Ammo-full{
-  font-family: 'GothamPro Light Italic';
+  font-family: "GothamPro Regular", Arial, sans-serif;
   font-weight: 300;
   font-style: italic;
   font-size: 1.67vh;
