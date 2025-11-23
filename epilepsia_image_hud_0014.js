@@ -339,7 +339,7 @@ body #app .hud-radmir-info {
 
 .Old-Fixed-Wanted {
    position: relative;
-   transform: translate(-151.7vh, 36.1vh); /* X, Y */
+   transform: translate(-151.7vh, 35.1vh); /* X, Y */
    background-color: rgba(0, 0, 0, 0.7);
    padding: 10px 15px;
    border-radius: 8px;
