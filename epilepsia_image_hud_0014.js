@@ -654,7 +654,7 @@ body #app .hud-radmir-radar__map {
         },
         totalAmmo: (value) => {
             const totalAmmoEl = document.querySelector(".Ammo-full");
-            if (totalAmmoEl) totalAmmoEl.textContent = " " + value;
+            if (totalAmmoEl) totalAmmoEl.textContent = "-" + value;
         },
         freeze: (value) => {
             const freezeValueEl = document.querySelector(".Old-Fixed-Freeze_value");
