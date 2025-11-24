@@ -1146,7 +1146,7 @@ body .window-button {
 .hud-params-above-radar {
     position: absolute;
     left: calc(7.2vh - 70px); /* Сдвиг влево (уменьшено значение на 20px) */
-    top: calc(100vh - 20.9vh - 100px); /* Сдвиг вниз (уменьшено вычитаемое значение на 20px) */
+    top: calc(100vh - 20.9vh - 115px); /* Сдвиг вниз (уменьшено вычитаемое значение на 20px) */
     display: flex;
     flex-direction: row; /* Горизонтальное расположение */
     gap: 20px; /* Расстояние между элементами */
