@@ -403,11 +403,15 @@ body #app .hud-radmir-radar__map {
 }
 
 #app .hud-radmir-radar { 
-  right: 142.2vh;
-  left: auto;
+  /* Смещение влево и вниз */
+  right: auto; /* Отменяем предыдущее значение */
+  left: 142.2vh; /* Смещение влево (увеличьте значение для большего сдвига влево) */
+  top: 10vh; /* Смещение вниз (увеличьте значение для сдвига вниз) */
+  /* или используйте bottom вместо top, если отсчёт ведётся снизу */
+  /* bottom: 10vh; */
 }
-      body .OLD-RADMIR-logo__bonus {
-    background: #000000c5
+body .OLD-RADMIR-logo__bonus {
+  background: #000000c5
 }
 .OLD-RADMIR-green-zone__main {
     position: absolute;
