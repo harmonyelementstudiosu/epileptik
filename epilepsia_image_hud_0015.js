@@ -1255,7 +1255,7 @@ body .window-button {
             }
             const ammoEls = document.querySelectorAll(".Old-Fixed-Weapon_ammo span");
             ammoEls.forEach(el => {
-                if (el) el.style.display = value >= 16 ? "  -" : "none";
+                if (el) el.style.display = value >= 16 ? "" : "none";
             });
         },
         health: (value) => {
@@ -1327,7 +1327,7 @@ body .window-button {
         },
         totalAmmo: (value) => {
             const totalAmmoEl = document.querySelector(".Ammo-full");
-            if (totalAmmoEl) totalAmmoEl.textContent = " " + value;
+            if (totalAmmoEl) totalAmmoEl.textContent = "-  " + value;
         },
         freeze: (value) => {
             const freezeValueEl = document.querySelector(".Old-Fixed-Freeze_value");
