@@ -934,7 +934,7 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container { 
-  background: #000000 !important;
+  background: #000000e5 !important;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 0 !important;
@@ -944,7 +944,7 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container:hover {
-  background: #1a1a1a;
+  background: #000000e5;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -952,9 +952,9 @@ body .window-button {
 #app .inventory-action__modal, 
 #app .inventory-extra__container, 
 #app .inventory-main { 
-  background: #000000;
+  background: #000000e5;
   border: 1px solid #404040;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px #000000e5;
   border-radius: 0;
   padding: 2vh;
   position: relative;
@@ -964,7 +964,7 @@ body .window-button {
 #app .inventory-action__modal:hover,
 #app .inventory-extra__container:hover,
 #app .inventory-main:hover {
-  background: #1a1a1a;
+  background: #000000e5;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -992,37 +992,37 @@ body .window-button {
 #app .inventory-container__box { 
   border-radius: 0; 
   border: .1vh solid #ffffff26; 
-  background: #1a1a1a;
+  background: #000000e5;
 } 
 
 #app .inventory-container__slot { 
   border-radius: 0; 
-  background: #1a1a1a;
+  background: #000000e5;
   border: .1vh solid #ffffff26;
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .inventory-container__slot:hover {
-  background: #333333;
-  border-color: #666666;
+  background: #000000e5;
+  border-color: #000000e5;
   box-shadow: 0 0 5px rgba(102, 102, 102, 0.3);
 }
 
 #app .inventory-container__slot:active {
-  background: #2a2a2a;
+  background: #000000e5;
   transform: scale(0.99);
 }
 
 #app .inventory-capacity__bar__fill, 
 #app .inventory-wear__bar__fill { 
   border-radius: 0; 
-  background: #666666;
+  background: #000000e5;
 } 
 
 #app .inventory-capacity__bar, 
 #app .inventory-wear__bar { 
-  background: #2a2a2a;
+  background: #000000e5;
   border-radius: 0; 
   width: 100%; 
   left: 1.5vh; 
@@ -1035,7 +1035,7 @@ body .window-button {
 
 #app .inventory-action__modal { 
   padding: 2vh; 
-  background: #000000;
+  background: #000000e5;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 0; 
@@ -1044,7 +1044,7 @@ body .window-button {
 } 
 
 #app .inventory-action__modal:hover {
-  background: #1a1a1a;
+  background: #000000e5;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -1062,7 +1062,7 @@ body .window-button {
   height: 4vh !important; 
   border-radius: 0 !important; 
   border: .1vh solid #ffffff26 !important; 
-  background: #1a1a1a !important;
+  background: #000000e5 !important;
 } 
 
 #app .inventory-wear__bar { 
@@ -1083,13 +1083,13 @@ body .window-button {
 /* ---------- Radial Menu (player-interaction) - PRESERVED ---------- */
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: #494949b9;
+  background: #000000e5;
   border: 1px solid #494949b9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 #app .player-interaction__inner {
-  background: #494949b9 !important;
+  background: #000000e5 !important;
   border: 1px solid #494949b9;
 }
 
