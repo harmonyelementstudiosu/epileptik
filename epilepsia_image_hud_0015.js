@@ -385,8 +385,7 @@ body #app .hud-radmir-info {
   align-items: center; 
   border-radius: 1.1; 
   border: 0.50vh solid #000000b3 !important;
-  outline: none;
-  box-shadow: none;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 1);
 }
 
 body #app .hud-radmir-radar__map { 
