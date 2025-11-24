@@ -760,18 +760,14 @@ body #app .hud-radmir-radar__map {
                         return Reflect.set(target, prop, value);
                     }
                 });
-                window.interface("Hud").showGreenZoneTab = async () => {
-                if (!greenZoneEl) {
-                    greenZoneEl = await findGreenZoneElement(); // Ищем элемент, если он еще не найден
-                }
-                if (greenZoneEl) {
-                    greenZoneEl.style.display = "block"; // Или "flex", "inline", в зависимости от нужного отображения
-                    console.log("Элемент 'Зеленой зоны' показан.");
-                } else {
-                    console.warn("Не удалось показать 'Зеленую зону': элемент не найден.");
-                }
-            };
-
+                window.interface("Hud").setServer = (serverId) => {
+                    onInfoChange("server", serverId);
+                    window.interface("Hud").server = serverId;
+                };
+                window.interface("Hud").setBonus = (bonusValue) => {
+                    onInfoChange("bonus", bonusValue);
+                    window.interface("Hud").bonus = bonusValue;
+                };
                 
                 // window.interface("Hud").showGreenZoneTab = () => { // Пример добавления метода
                 //     if (greenZoneEl) greenZoneEl.style.display = ""; // Показать
@@ -786,13 +782,19 @@ body #app .hud-radmir-radar__map {
     createHud();
 
     // Принудительно показать элемент ZZ после создания HUD, если он существует
-    const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
-    if (initialZZElement) {
-        initialZZElement.style.display = "";
-        updateFunctions.greenZone(true) // Устанавливаем display на block
-        // Или вызываем функцию greenZone с true, если она должна управлять этим
-        // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
-    }
+    document.querySelector(".Old-Fixed-ZZ");
+    window.interface("Hud").showGreenZoneTab = async () => {
+                if (!greenZoneEl) {
+                    greenZoneEl = await findGreenZoneElement(); // Ищем элемент, если он еще не найден
+                }
+                if (greenZoneEl) {
+                    greenZoneEl.style.display = "block"; // Или "flex", "inline", в зависимости от нужного отображения
+                    console.log("Элемент 'Зеленой зоны' показан.");
+                } else {
+                    console.warn("Не удалось показать 'Зеленую зону': элемент не найден.");
+                }
+            };
+
 
     window.onInfoChange = onInfoChange;
     setTimeout(() => {
