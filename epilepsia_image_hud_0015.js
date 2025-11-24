@@ -183,7 +183,7 @@ body #app .hud-radmir-info {
 .Old-Fixed-Logo img {
   width: 24.624vh;   /* 20.52 * 1.2 */
   height: 7.44vh;    /* 6.2 * 1.2 */
-  margin-right: 2vh;
+  margin-right: 1vh;
 }
 
 .Old-Fixed-Bonus{
@@ -319,7 +319,7 @@ body #app .hud-radmir-info {
       }
 .Old-Fixed-Wanted {
    position: relative;
-   transform: translate(-151.7vh, 34.7vh); /* X, Y */
+   transform: translate(-151.7vh, 35.7vh); /* X, Y */
    background-color: rgba(0, 0, 0, 0.7);
    padding: 10px 15px;
    border-radius: 8px;
