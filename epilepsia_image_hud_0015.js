@@ -160,9 +160,8 @@ body #app .hud-radmir-info {
 }
 
 .Ammo-in-clip{
-  font-family: 'GothamPro Bold Italic';
+  font-family: "GothamPro Regular", Arial, sans-serif;
   font-weight: 900;
-  font-style: italic;
 }
 
 .Old-Fixed-HudTop{
@@ -286,11 +285,11 @@ body #app .hud-radmir-info {
 }
 
 .Ammo-full{
-  font-family: 'GothamPro Light Italic';
+  font-family: "GothamPro Regular", Arial, sans-serif;
   font-weight: 300;
   font-style: italic;
   font-size: 1.67vh;
-  text-shadow: 0 0 .46vh #000000ff;
+  text-shadow: 0 0 .46vh #000000b3;
 }
       .Old-Fixed-Params__all{
        margin-top:1vh
@@ -1256,7 +1255,7 @@ body .window-button {
             }
             const ammoEls = document.querySelectorAll(".Old-Fixed-Weapon_ammo span");
             ammoEls.forEach(el => {
-                if (el) el.style.display = value >= 16 ? "" : "none";
+                if (el) el.style.display = value >= 16 ? "  -" : "none";
             });
         },
         health: (value) => {
