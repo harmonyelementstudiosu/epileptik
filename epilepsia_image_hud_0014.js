@@ -461,7 +461,7 @@ body #app .hud-radmir-radar__map {
 }
     /* ---------- Fuel Menu ---------- */
 #app .fuel__button .text:before { 
-  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xMS40NTEgMUw0LjQ4NCA3Ljg0OEwxIDQuNDI0IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KPC9zdmc+DQo=) center/contain no-repeat !important 
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMyAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xMS40NTEgMUw0LjQ4NCA3Ljg0OEwxIDQuNDI0IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KPC9zdmc+DQo=") center/contain no-repeat !important; 
 } 
 
 #app .fuel__container:before { 
@@ -474,7 +474,7 @@ body #app .hud-radmir-radar__map {
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
-  border-radius: 4px;
+  border-radius: 0;
   transition: all 0.2s ease;
 }
 
@@ -530,7 +530,7 @@ body #app .hud-radmir-radar__map {
 #app .fuel__button { 
   background: #ffffff !important; 
   color: #000000 !important;
-  border-radius: 3px;
+  border-radius: 0;
   border: 1px solid #cccccc;
   transition: all 0.2s;
   position: relative;
@@ -566,6 +566,7 @@ body #app .hud-radmir-radar__map {
   border: 1px solid #333333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
+  border-radius: 0;
 } 
 
 #app .death-timer { 
@@ -574,6 +575,7 @@ body #app .hud-radmir-radar__map {
   border: 1px solid #333333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
+  border-radius: 0;
 } 
 
 /* ---------- Info Cards ---------- */
@@ -581,7 +583,7 @@ body .info-card {
   background: #000000;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 31px !important;
+  border-radius: 0 !important;
   position: relative;
   transition: all 0.2s ease;
 } 
@@ -596,12 +598,12 @@ body .info-card__data {
   background: #1a1a1a;
   border: 1px solid #454545;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 31px;
+  border-radius: 0;
   position: relative;
   transition: all 0.2s ease;
 } 
 
-body .info-card__data:hover {
+body .info-card__hover {
   background: #2a2a2a;
   border-color: #7a7a7a;
   box-shadow: 0 2px 5px rgba(102, 102, 102, 0.3);
@@ -622,7 +624,7 @@ body .info-card .text {
   background: #000000;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  border-radius: 0;
   position: relative;
   transition: all 0.2s ease;
 } 
@@ -639,7 +641,7 @@ body .info-card .text {
 } 
 
 #app .trade-items__container { 
-  border-radius: 10px; 
+  border-radius: 0; 
   height: 613px; 
   width: 1283px; 
   background: #000000 !important;
@@ -680,7 +682,7 @@ body .info-card .text {
 
 #app .radmir-chat-input__input { 
   background: #000000 !important;
-  border-radius: 11px !important;
+  border-radius: 0 !important;
   border: 1px solid #404040;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -701,7 +703,7 @@ body .info-card .text {
 } 
 
 #app .controls-button { 
-  border-radius: .5vh;
+  border-radius: 0;
   background: #333333;
   color: #ffffff !important;
   border: 1px solid #4a4a4a;
@@ -723,7 +725,7 @@ body .info-card .text {
 #app .modal-container-wrapper { 
   background: #000000 !important;
   border: 0.19vh solid #404040;
-  border-radius: 2.5vh !important;
+  border-radius: 0 !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   position: relative;
   transition: all 0.2s ease;
@@ -861,7 +863,7 @@ body .window__title {
 
 body .window-table__item { 
   color: #fff;
-  border-radius: 2vh; 
+  border-radius: 0; 
   border: .09vh solid #ffffff00; 
   transition: .25s;
   background: #1a1a1a;
@@ -894,7 +896,7 @@ body .window-table__item:active {
 }
 
 body .window-button { 
-  border-radius: 2vh; 
+  border-radius: 0; 
   color: #ffffff; 
   background: #3a3a3a;
   border: 1px solid #4a4a4a;
@@ -932,17 +934,17 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container { 
-  background: #000000ff !important;
+  background: #000000 !important;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 1.1vh !important;
+  border-radius: 0 !important;
   padding: 2vh;
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .inventory-container__info__container:hover {
-  background: #000000ff;
+  background: #1a1a1a;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -950,10 +952,10 @@ body .window-button {
 #app .inventory-action__modal, 
 #app .inventory-extra__container, 
 #app .inventory-main { 
-  background: #000000ff;
+  background: #000000;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 1.1vh;
+  border-radius: 0;
   padding: 2vh;
   position: relative;
   transition: all 0.2s ease;
@@ -962,7 +964,7 @@ body .window-button {
 #app .inventory-action__modal:hover,
 #app .inventory-extra__container:hover,
 #app .inventory-main:hover {
-  background: #000000ff;
+  background: #1a1a1a;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -988,40 +990,40 @@ body .window-button {
 
 #app .inventory-capacity, 
 #app .inventory-container__box { 
-  border-radius: 1vh; 
+  border-radius: 0; 
   border: .1vh solid #ffffff26; 
-  background: #000000ff;
+  background: #1a1a1a;
 } 
 
 #app .inventory-container__slot { 
-  border-radius: 1vh; 
-  background: #000000ff;
+  border-radius: 0; 
+  background: #1a1a1a;
   border: .1vh solid #ffffff26;
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .inventory-container__slot:hover {
-  background: #000000ff;
+  background: #333333;
   border-color: #666666;
   box-shadow: 0 0 5px rgba(102, 102, 102, 0.3);
 }
 
 #app .inventory-container__slot:active {
-  background: #000000ff;
+  background: #2a2a2a;
   transform: scale(0.99);
 }
 
 #app .inventory-capacity__bar__fill, 
 #app .inventory-wear__bar__fill { 
-  border-radius: 1vh; 
-  background: #000000ff;
+  border-radius: 0; 
+  background: #666666;
 } 
 
 #app .inventory-capacity__bar, 
 #app .inventory-wear__bar { 
-  background: #000000ff;
-  border-radius: 1vh; 
+  background: #2a2a2a;
+  border-radius: 0; 
   width: 100%; 
   left: 1.5vh; 
   bottom: 1vh; 
@@ -1033,22 +1035,22 @@ body .window-button {
 
 #app .inventory-action__modal { 
   padding: 2vh; 
-  background: #000000ff;
+  background: #000000;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border-radius: 1.1vh; 
+  border-radius: 0; 
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .inventory-action__modal:hover {
-  background: #000000ff;
+  background: #1a1a1a;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
 #app .inventory-action__item__icon { 
-  border-radius: 1vh; 
+  border-radius: 0; 
 } 
 
 #app .inventory-wear__content { 
@@ -1058,9 +1060,9 @@ body .window-button {
 #app .inventory-item-value { 
   padding: 0 2vh; 
   height: 4vh !important; 
-  border-radius: 1vh !important; 
+  border-radius: 0 !important; 
   border: .1vh solid #ffffff26 !important; 
-  background: #000000ff !important;
+  background: #1a1a1a !important;
 } 
 
 #app .inventory-wear__bar { 
@@ -1073,22 +1075,22 @@ body .window-button {
 } 
 
 #app .inventory-container__actions { 
-  border-bottom-left-radius: .8vh; 
-  border-bottom-right-radius: .8vh; 
+  border-bottom-left-radius: 0; 
+  border-bottom-right-radius: 0; 
   overflow: hidden; 
 } 
 
 /* ---------- Radial Menu (player-interaction) - PRESERVED ---------- */
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid #ffffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+  background: #494949b9;
+  border: 1px solid #494949b9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 #app .player-interaction__inner {
-  background: rgba(0, 0, 0, 0.9) !important;
-  border: 1px solid #ffffffff;
+  background: #494949b9 !important;
+  border: 1px solid #494949b9;
 }
 
 #app .player-interaction__icon,
