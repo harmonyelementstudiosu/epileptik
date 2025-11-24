@@ -354,7 +354,7 @@ body #app .hud-radmir-info {
       }
       .Old-Fixed-ZZ{
        position:absolute;
-       left:21.3vh; /* Исправлено: изменено значение left, если нужно */
+       left:24.3vh; /* Исправлено: изменено значение left, если нужно */
        bottom:2vh; /* Исправлено: изменено значение bottom */
        display: block; /* Принудительно устанавливаем display: block */
       }
