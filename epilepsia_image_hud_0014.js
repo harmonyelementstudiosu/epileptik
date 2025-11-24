@@ -936,7 +936,7 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container { 
-  background: #000000 !important;
+  background: #000000ff !important;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1.1vh !important;
@@ -946,7 +946,7 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container:hover {
-  background: #1a1a1a;
+  background: #000000ff;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -954,7 +954,7 @@ body .window-button {
 #app .inventory-action__modal, 
 #app .inventory-extra__container, 
 #app .inventory-main { 
-  background: #000000;
+  background: #000000ff;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1.1vh;
@@ -966,7 +966,7 @@ body .window-button {
 #app .inventory-action__modal:hover,
 #app .inventory-extra__container:hover,
 #app .inventory-main:hover {
-  background: #1a1a1a;
+  background: #000000ff;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -994,37 +994,37 @@ body .window-button {
 #app .inventory-container__box { 
   border-radius: 1vh; 
   border: .1vh solid #ffffff26; 
-  background: #1a1a1a;
+  background: #000000ff;
 } 
 
 #app .inventory-container__slot { 
   border-radius: 1vh; 
-  background: #1a1a1a;
+  background: #000000ff;
   border: .1vh solid #ffffff26;
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .inventory-container__slot:hover {
-  background: #1a1a1a;
+  background: #000000ff;
   border-color: #666666;
   box-shadow: 0 0 5px rgba(102, 102, 102, 0.3);
 }
 
 #app .inventory-container__slot:active {
-  background: #1a1a1a;
+  background: #000000ff;
   transform: scale(0.99);
 }
 
 #app .inventory-capacity__bar__fill, 
 #app .inventory-wear__bar__fill { 
   border-radius: 1vh; 
-  background: #1a1a1a;
+  background: #000000ff;
 } 
 
 #app .inventory-capacity__bar, 
 #app .inventory-wear__bar { 
-  background: #1a1a1a;
+  background: #000000ff;
   border-radius: 1vh; 
   width: 100%; 
   left: 1.5vh; 
@@ -1037,7 +1037,7 @@ body .window-button {
 
 #app .inventory-action__modal { 
   padding: 2vh; 
-  background: #000000;
+  background: #000000ff;
   border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1.1vh; 
@@ -1046,7 +1046,7 @@ body .window-button {
 } 
 
 #app .inventory-action__modal:hover {
-  background: #1a1a1a;
+  background: #000000ff;
   border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
@@ -1064,7 +1064,7 @@ body .window-button {
   height: 4vh !important; 
   border-radius: 1vh !important; 
   border: .1vh solid #ffffff26 !important; 
-  background: #1a1a1a !important;
+  background: #000000ff !important;
 } 
 
 #app .inventory-wear__bar { 
