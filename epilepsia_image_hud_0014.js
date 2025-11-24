@@ -409,7 +409,7 @@ body #app .hud-radmir-info {
   outline-offset: 2px; /* Отступ внешней обводки от края элемента */
   /* Внутренняя тень, имитирующая внутреннюю обводку */
   box-shadow: 
-    0 0px 25px rgba(0, 0, 0, 0.81), /* Ваша текущая тень */
+    0 0px 25px rgba(0, 0, 0, 1), /* Ваша текущая тень */
     inset 0 0 0 7px #000000ff; /* Внутренняя обводка (цвет и толщина) */
 }
 body #app .hud-radmir-radar__map { 
@@ -784,7 +784,7 @@ body #app .hud-radmir-radar__map {
     // Принудительно показать элемент ZZ после создания HUD, если он существует
     const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
     if (initialZZElement) {
-        initialZZElement.style.display = "block"; // Устанавливаем display на block
+        initialZZElement.style.display = "true"; // Устанавливаем display на block
         // Или вызываем функцию greenZone с true, если она должна управлять этим
         // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
     }
