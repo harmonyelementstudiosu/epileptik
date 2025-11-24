@@ -742,55 +742,25 @@ body #app .hud-radmir-radar__map {
         });
     }
     function initializeHudProxy() {
-    const checkInterval = setInterval(() => {
-        if (typeof window.interface === "function" && window.interface("Hud").info) {
-            clearInterval(checkInterval);
-            const hudInfo = window.interface("Hud").info;
-            const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
-            
-            // Инициализировать greenZoneEl после создания DOM
-            let greenZoneEl = null; // Инициализируем как null, будем искать позже
+        const checkInterval = setInterval(() => {
+            if (typeof window.interface === "function" && window.interface("Hud").info) {
+                clearInterval(checkInterval);
+                const hudInfo = window.interface("Hud").info;
+                const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
+                
+                // Инициализировать greenZoneEl после создания DOM
+                let greenZoneEl = document.querySelector(".Old-Fixed-ZZ");
 
-            // Функция для поиска элемента с повторными попытками
-            function findGreenZoneElement(maxAttempts = 10, delay = 100) {
-                return new Promise((resolve) => {
-                    let attempts = 0;
-                    const attemptFind = () => {
-                        const element = document.querySelector(".Old-Fixed-ZZ");
-                        if (element) {
-                            resolve(element);
-                        } else if (attempts < maxAttempts) {
-                            attempts++;
-                            setTimeout(attemptFind, delay);
-                        } else {
-                            console.warn("Элемент .Old-Fixed-ZZ не найден после нескольких попыток.");
-                            resolve(null);
+                window.interface("Hud").info = new Proxy(clonedHudInfo, {
+                    set(target, prop, value) {
+                        if (target[prop] !== value) {
+                            target[prop] = value;
+                            onInfoChange(prop, value);
                         }
-                    };
-                    attemptFind();
-                });
-            }
-
-            window.interface("Hud").info = new Proxy(clonedHudInfo, {
-                set(target, prop, value) {
-                    if (target[prop] !== value) {
-                        target[prop] = value;
-                        onInfoChange(prop, value);
+                        return Reflect.set(target, prop, value);
                     }
-                    return Reflect.set(target, prop, value);
-                }
-            });
-            window.interface("Hud").setServer = (serverId) => {
-                onInfoChange("server", serverId);
-                window.interface("Hud").server = serverId;
-            };
-            window.interface("Hud").setBonus = (bonusValue) => {
-                onInfoChange("bonus", bonusValue);
-                window.interface("Hud").bonus = bonusValue;
-            };
-            
-            // Метод для показа "Зеленой зоны"
-            window.interface("Hud").showGreenZoneTab = async () => {
+                });
+                window.interface("Hud").showGreenZoneTab = async () => {
                 if (!greenZoneEl) {
                     greenZoneEl = await findGreenZoneElement(); // Ищем элемент, если он еще не найден
                 }
@@ -802,18 +772,27 @@ body #app .hud-radmir-radar__map {
                 }
             };
 
-            // Метод для скрытия "Зеленой зоны"
-            window.interface("Hud").hideGreenZoneTab = () => {
-                if (greenZoneEl) {
-                    greenZoneEl.style.display = "none";
-                    console.log("Элемент 'Зеленой зоны' скрыт.");
-                } else {
-                    console.warn("Не удалось скрыть 'Зеленую зону': элемент не найден.");
-                }
-            };
-        }
-    }, 100);
-}
+                
+                // window.interface("Hud").showGreenZoneTab = () => { // Пример добавления метода
+                //     if (greenZoneEl) greenZoneEl.style.display = ""; // Показать
+                // };
+                // window.interface("Hud").hideGreenZoneTab = () => { // Пример добавления метода
+                //     if (greenZoneEl) greenZoneEl.style.display = "none"; // Скрыть
+                // };
+            }
+        }, 100);
+    }
+    initializeHudProxy();
+    createHud();
+
+    // Принудительно показать элемент ZZ после создания HUD, если он существует
+    const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
+    if (initialZZElement) {
+        initialZZElement.style.display = "";
+        updateFunctions.greenZone(true) // Устанавливаем display на block
+        // Или вызываем функцию greenZone с true, если она должна управлять этим
+        // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
+    }
 
     window.onInfoChange = onInfoChange;
     setTimeout(() => {
