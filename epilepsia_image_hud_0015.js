@@ -393,7 +393,7 @@ body #app .hud-radmir-radar__map {
 
 #app .hud-hassle-map { 
   width: 40vh !important; /* Пропорционально увеличена ширина */
-  height: 26.88vh !important; /* Высота оставлена как есть */
+  height: 40.88vh !important; /* Высота оставлена как есть */
 }
 
 #app .hud-radmir-radar__radar { 
