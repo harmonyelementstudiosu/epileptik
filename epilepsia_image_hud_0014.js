@@ -1,105 +1,34 @@
 function AddHud() {
-    let notificationContainer;
+    // Проверяем, не создано ли уже уведомление
+    if (document.getElementById('singleGrayNotification')) return;
 
-    function createNotificationContainer() {
-        if (!notificationContainer) {
-            notificationContainer = document.createElement('div');
-            notificationContainer.id = 'epilepsialoaderNotificationContainer';
-            notificationContainer.style.position = 'fixed';
-            notificationContainer.style.bottom = '20px';
-            notificationContainer.style.right = '20px';
-            notificationContainer.style.zIndex = '1000';
-            notificationContainer.style.display = 'flex';
-            notificationContainer.style.flexDirection = 'column-reverse';
-            notificationContainer.style.alignItems = 'flex-end';
-            notificationContainer.style.gap = '15px';
-            notificationContainer.style.maxHeight = '80vh';
-            notificationContainer.style.overflowY = 'auto';
-            document.body.appendChild(notificationContainer);
-        }
-    }
+    // Создаем основной элемент уведомления
+    const notification = document.createElement('div');
+    notification.id = 'singleGrayNotification';
+    notification.style.position = 'fixed';
+    notification.style.bottom = '10px'; // Отступ от низа экрана
+    notification.style.right = '10px';  // Отступ от правого края
+    notification.style.padding = '8px 15px';
+    notification.style.backgroundColor = 'rgba(102, 102, 102, 1)'; // Серый фон
+    notification.style.color = '#fff';           // Белый текст
+    notification.style.fontFamily = 'Arial, sans-serif';
+    notification.style.fontSize = '14px';
+    notification.style.borderRadius = '4px';
+    notification.style.boxShadow = '0 0px 5px rgba(0, 0, 0, 0.57)';
+    notification.style.zIndex = '1000';
+    notification.style.display = 'flex';
+    notification.style.alignItems = 'center';
+    notification.style.justifyContent = 'center';
 
-    function createNotificationElement(text = null, color = '#FFFFFF', iconSrc = null, bgColor = 'rgba(0, 0, 0, 0.9)', isImageOnly = false, imageSrc = null) {
-        createNotificationContainer();
+    // Текст уведомления (можно изменить на любой)
+    notification.textContent = 'Старая карточка бизов/домов';
 
-        const notification = document.createElement('div');
-        notification.className = 'epilepsialoader-notification';
-
-        notification.style.position = 'relative';
-        notification.style.padding = '18px 36px';
-        notification.style.minWidth = '375px';
-        notification.style.maxWidth = '600px';
-        notification.style.marginTop = '7.5px';
-        notification.style.marginBottom = '7.5px';
-        notification.style.backgroundColor = bgColor;
-        notification.style.color = color;
-        notification.style.fontFamily = "'Comic Sans MS', 'Marker Felt', sans-serif";
-        notification.style.fontSize = '27px';
-        notification.style.borderRadius = '15px';
-        const colorHex = color.replace('#', '');
-        const r = parseInt(colorHex.slice(0, 2), 16);
-        const g = parseInt(colorHex.slice(2, 4), 16);
-        const b = parseInt(colorHex.slice(4, 6), 16);
-        notification.style.boxShadow = `0 6px 18px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(${r}, ${g}, ${b}, 0.2)`;
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateY(45px) scale(0.925)';
-        notification.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-        notification.style.display = 'flex';
-        notification.style.justifyContent = 'flex-start';
-        notification.style.alignItems = 'center';
-        notification.style.wordWrap = 'break-word';
-        notification.style.textAlign = 'left';
-
-        if (isImageOnly && imageSrc) {
-            const img = document.createElement('img');
-            img.src = imageSrc;
-            img.alt = 'Notification Image';
-            img.style.width = '360px';
-            img.style.height = '64.5px';
-            notification.style.padding = '0';
-            notification.style.display = 'flex';
-            notification.style.justifyContent = 'center';
-            notification.style.alignItems = 'center';
-            notification.appendChild(img);
-        } else {
-            if (iconSrc) {
-                const icon = document.createElement('img');
-                icon.src = iconSrc;
-                icon.style.width = '36px';
-                icon.style.height = '36px';
-                icon.style.marginRight = '18px';
-                notification.appendChild(icon);
-            }
-
-            if (text) {
-                const textElement = document.createElement('span');
-                textElement.textContent = text;
-                notification.appendChild(textElement);
-            }
-        }
-
-        if (notificationContainer.firstChild) {
-            notificationContainer.insertBefore(notification, notificationContainer.firstChild);
-        } else {
-            notificationContainer.appendChild(notification);
-        }
 
         setTimeout(() => {
-            notification.style.opacity = '1';
-            notification.style.transform = 'translateY(0) scale(1)';
-        }, 10);
-
-        return notification;
-    }
-
-    createNotificationElement(
-        'NAZVANIE HUDA',
-        '#FFFFFF',
-        'https://i.postimg.cc/yx7JgrXD/free-icon-check-14090371.png',
-        'rgba(0, 0, 0, 0.9)'
-    );
-
-    createNotificationContainer();
+            if (notificationElement && notificationElement.parentNode) {
+                notificationElement.parentNode.removeChild(notificationElement);
+            }
+        }, 5000);
     };
 
     const hudScript = document.currentScript;
@@ -1565,5 +1494,6 @@ body .window-button {
         if (hudStyleElement) {
             hudStyleElement.remove();
         }
-    });
+    }
+);
 AddHud();
