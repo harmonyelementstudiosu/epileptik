@@ -180,9 +180,9 @@ body #app .hud-radmir-info {
 }
 
 /* Лого */
-.Old-Fixed-Logo img{
-  width: 20.52vh;
-  height: 6.2vh;
+.Old-Fixed-Logo img {
+  width: 24.624vh;   /* 20.52 * 1.2 */
+  height: 7.44vh;    /* 6.2 * 1.2 */
   margin-right: 2vh;
 }
 
