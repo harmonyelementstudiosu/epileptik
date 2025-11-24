@@ -474,8 +474,8 @@ body #app .hud-radmir-radar__map {
 
 #app .fuel__container { 
   padding: 3.33vh 2.96vh;
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
   border-radius: 4px;
@@ -483,8 +483,8 @@ body #app .hud-radmir-radar__map {
 }
 
 #app .fuel__container:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
@@ -526,28 +526,28 @@ body #app .hud-radmir-radar__map {
 
 #app .fuel__class-col.selected, 
 .fuel__class-col:hover { 
-  background: rgba(85, 85, 85, 0.9) !important;
+  background: #333333 !important;
   box-shadow: 0 12px 22px #ffffff14 !important; 
   color: #ffffff !important 
 } 
 
 #app .fuel__button { 
-  background: rgba(255, 255, 255, 0.9) !important; 
+  background: #ffffff !important; 
   color: #000000 !important;
   border-radius: 3px;
-  border: 1px solid rgba(204, 204, 204, 0.9);
+  border: 1px solid #cccccc;
   transition: all 0.2s;
   position: relative;
   overflow: hidden;
 } 
 
 #app .fuel__button:hover { 
-  background: rgba(224, 224, 224, 0.9) !important;
+  background: #e0e0e0 !important;
   box-shadow: 0 6px 20px #ffffff40 !important;
 } 
 
 #app .fuel__button:active {
-  background: rgba(204, 204, 204, 0.9) !important;
+  background: #cccccc !important;
   transform: scale(0.98);
 }
 
@@ -566,24 +566,24 @@ body #app .hud-radmir-radar__map {
 
 #app .death { 
   font-style: italic; 
-  background: rgba(0, 0, 0, 0) !important;
-  border: 1px solid rgba(51, 51, 51, 0);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0);
+  background: #000000 !important;
+  border: 1px solid #333333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
 } 
 
 #app .death-timer { 
   font-style: italic;
-  background: rgba(0, 0, 0, 0.9) !important;
-  border: 1px solid rgba(51, 51, 51, 0.9);
+  background: #000000 !important;
+  border: 1px solid #333333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
 } 
 
 /* ---------- Info Cards ---------- */
 body .info-card { 
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 31px !important;
   position: relative;
@@ -591,23 +591,23 @@ body .info-card {
 } 
 
 body .info-card:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
 body .info-card__data { 
-  background: rgba(26, 26, 26, 0.9);
-  border: 1px solid rgba(69, 69, 69, 0.9);
+  background: #1a1a1a;
+  border: 1px solid #454545;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 31px;
   position: relative;
   transition: all 0.2s ease;
 } 
 
-body .info-card__hover {
-  background: rgba(42, 42, 42, 0.9);
-  border-color: rgba(122, 122, 122, 0.9);
+body .info-card__data:hover {
+  background: #2a2a2a;
+  border-color: #7a7a7a;
   box-shadow: 0 2px 5px rgba(102, 102, 102, 0.3);
 }
 
@@ -623,8 +623,8 @@ body .info-card .text {
 
 /* ---------- Container ---------- */
 #app .container { 
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   position: relative;
@@ -632,8 +632,8 @@ body .info-card .text {
 } 
 
 #app .container:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
@@ -646,16 +646,16 @@ body .info-card .text {
   border-radius: 10px; 
   height: 613px; 
   width: 1283px; 
-  background: rgba(0, 0, 0, 0.9) !important;
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000 !important;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .trade-items__container:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
@@ -683,17 +683,17 @@ body .info-card .text {
 } 
 
 #app .radmir-chat-input__input { 
-  background: rgba(0, 0, 0, 0.9) !important;
+  background: #000000 !important;
   border-radius: 11px !important;
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  border: 1px solid #404040;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   position: relative;
   transition: all 0.2s ease;
 } 
 
 #app .radmir-chat-input__input:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
 }
 
 #app .radmir-chat-input__input input { 
@@ -706,27 +706,27 @@ body .info-card .text {
 
 #app .controls-button { 
   border-radius: .5vh;
-  background: rgba(51, 51, 51, 0.9);
+  background: #333333;
   color: #ffffff !important;
-  border: 1px solid rgba(74, 74, 74, 0.9);
+  border: 1px solid #4a4a4a;
   transition: all 0.2s;
   position: relative;
 } 
 
 #app .controls-button:hover {
-  background: rgba(85, 85, 85, 0.9);
-  border-color: rgba(122, 122, 122, 0.9);
+  background: #555555;
+  border-color: #7a7a7a;
 }
 
 #app .controls-button:active {
-  background: rgba(42, 42, 42, 0.9);
+  background: #2a2a2a;
   transform: scale(0.98);
 }
 
 /* ---------- Modals ---------- */
 #app .modal-container-wrapper { 
-  background: rgba(0, 0, 0, 0.9) !important;
-  border: 0.19vh solid rgba(64, 64, 64, 0.9);
+  background: #000000 !important;
+  border: 0.19vh solid #404040;
   border-radius: 2.5vh !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -734,8 +734,8 @@ body .info-card .text {
 } 
 
 #app .modal-container-wrapper:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 6px 16px rgba(102, 102, 102, 0.5);
 }
 
@@ -868,61 +868,61 @@ body .window-table__item {
   border-radius: 2vh; 
   border: .09vh solid #ffffff00; 
   transition: .25s;
-  background: rgba(26, 26, 26, 0.9);
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #1a1a1a;
+  border: 1px solid #404040;
   margin-bottom: 1px;
   position: relative;
 } 
 
 body .window-table__item.selected { 
-  background: rgba(85, 85, 85, 0.9) !important;
+  background: #555555 !important;
   color: #ffffff; 
   border: .09vh solid #f4f1e100 
 } 
 
 body .window-table__item:hover { 
-  background: rgba(51, 51, 51, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #333333;
+  border-color: #666666;
   box-shadow: 0 0 5px rgba(102, 102, 102, 0.3);
 } 
 
 body .window-table__item.selected:hover { 
-  background: rgba(102, 102, 102, 0.9) !important;
+  background: #666666 !important;
   color: #ffffff; 
   border: 0.09vh solid #f4f1e100; 
 } 
 
 body .window-table__item:active {
-  background: rgba(42, 42, 42, 0.9);
+  background: #2a2a2a;
   transform: scale(0.99);
 }
 
 body .window-button { 
   border-radius: 2vh; 
   color: #ffffff; 
-  background: rgba(58, 58, 58, 0.9);
-  border: 1px solid rgba(74, 74, 74, 0.9);
+  background: #3a3a3a;
+  border: 1px solid #4a4a4a;
   transition: all 0.2s;
   position: relative;
 } 
 
 #app .window-button:hover { 
   color: #ffffff; 
-  background: rgba(85, 85, 85, 0.9);
-  border-color: rgba(122, 122, 122, 0.9);
+  background: #555555;
+  border-color: #7a7a7a;
 } 
 
 #app .window-button:first-child:hover { 
-  background: rgba(85, 85, 85, 0.9) !important;
+  background: #555555 !important;
 } 
 
 #app .window-button:first-child { 
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: #ffffff !important;
   color: #000000 !important;
 } 
 
 #app .window-button:active {
-  background: rgba(42, 42, 42, 0.9);
+  background: #2a2a2a;
   transform: scale(0.98);
 }
 
@@ -936,8 +936,8 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container { 
-  background: rgba(0, 0, 0, 0.9) !important;
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000 !important;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1.1vh !important;
   padding: 2vh;
@@ -946,16 +946,16 @@ body .window-button {
 } 
 
 #app .inventory-container__info__container:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
 #app .inventory-action__modal, 
 #app .inventory-extra__container, 
 #app .inventory-main { 
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1.1vh;
   padding: 2vh;
@@ -966,8 +966,8 @@ body .window-button {
 #app .inventory-action__modal:hover,
 #app .inventory-extra__container:hover,
 #app .inventory-main:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
@@ -993,40 +993,38 @@ body .window-button {
 #app .inventory-capacity, 
 #app .inventory-container__box { 
   border-radius: 1vh; 
-  border: .1vh solid rgba(255, 255, 255, 0.26); 
-  background: rgba(26, 26, 26, 0.9);
-}
+  border: .1vh solid #ffffff26; 
+  background: #1a1a1a;
+} 
 
 #app .inventory-container__slot { 
   border-radius: 1vh; 
-  background: rgba(26, 26, 26, 0.9);
-  border: .1vh solid rgba(255, 255, 255, 0.26);
+  background: #1a1a1a;
+  border: .1vh solid #ffffff26;
   position: relative;
   transition: all 0.2s ease;
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
-}
+} 
 
 #app .inventory-container__slot:hover {
-  background: rgba(51, 51, 51, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1), 0 0 5px rgba(102, 102, 102, 0.3);
+  background: #333333;
+  border-color: #666666;
+  box-shadow: 0 0 5px rgba(102, 102, 102, 0.3);
 }
 
 #app .inventory-container__slot:active {
-  background: rgba(42, 42, 42, 0.9);
+  background: #2a2a2a;
   transform: scale(0.99);
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
 #app .inventory-capacity__bar__fill, 
 #app .inventory-wear__bar__fill { 
   border-radius: 1vh; 
-  background: rgba(102, 102, 102, 0.9);
+  background: #666666;
 } 
 
 #app .inventory-capacity__bar, 
 #app .inventory-wear__bar { 
-  background: rgba(42, 42, 42, 0.9);
+  background: #2a2a2a;
   border-radius: 1vh; 
   width: 100%; 
   left: 1.5vh; 
@@ -1039,8 +1037,8 @@ body .window-button {
 
 #app .inventory-action__modal { 
   padding: 2vh; 
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(64, 64, 64, 0.9);
+  background: #000000;
+  border: 1px solid #404040;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1.1vh; 
   position: relative;
@@ -1048,8 +1046,8 @@ body .window-button {
 } 
 
 #app .inventory-action__modal:hover {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(102, 102, 102, 0.9);
+  background: #1a1a1a;
+  border-color: #666666;
   box-shadow: 0 2px 6px rgba(102, 102, 102, 0.4);
 }
 
@@ -1065,8 +1063,8 @@ body .window-button {
   padding: 0 2vh; 
   height: 4vh !important; 
   border-radius: 1vh !important; 
-  border: .1vh solid rgba(255, 255, 255, 0.26) !important; 
-  background: rgba(26, 26, 26, 0.9) !important;
+  border: .1vh solid #ffffff26 !important; 
+  background: #1a1a1a !important;
 } 
 
 #app .inventory-wear__bar { 
@@ -1087,14 +1085,14 @@ body .window-button {
 /* ---------- Radial Menu (player-interaction) - PRESERVED ---------- */
 #app .player-interaction__container,
 #app .player-interaction-layer {
-  background: rgba(73, 73, 73, 0.9);
-  border: 1px solid rgba(73, 73, 73, 0.9);
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #494949b9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 #app .player-interaction__inner {
-  background: rgba(73, 73, 73, 0.9) !important;
-  border: 1px solid rgba(73, 73, 73, 0.9);
+  background: rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid #494949b9;
 }
 
 #app .player-interaction__icon,
