@@ -768,18 +768,18 @@ body #app .hud-radmir-radar__map {
     // oldRadmirConfig.icons.zone = "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/earth-americas.svg";
 
     // Вариант 2: Иконка из репозитория Material Icons (через GitHub Raw)
-    oldRadmirConfig.icons.zone = "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/earth-americas.svg";
+    oldRadmirConfig.icons.zone = "https://raw.githubusercontent.com/google/material-design-icons/master/src/maps/zone/baseline/data_usage_black_24dp.svg";
 
     // --- КОНЕЦ ВАРИАНТОВ ---
 
     createHud();
 
-    // Принудительно показать элемент ZZ после создания HUD, если он существует
-    const initialZZElement = document.querySelector(".Old-Fixed-ZZ");
-    if (initialZZElement) {
-        initialZZElement.style.display = "block"; // Устанавливаем display на block
-        // Или вызываем функцию greenZone с true, если она должна управлять этим
-        // updateFunctions.greenZone(true); // Это также сработает, если функция правильно настроена
+    // --- ⚠️ КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ ⚠️ ---
+    // Принудительно показываем элемент "Зеленая Зона" после создания HUD.
+    // Это гарантирует, что он будет виден, даже если функция greenZone не вызвана.
+    const zzElement = document.querySelector(".Old-Fixed-ZZ");
+    if (zzElement) {
+        zzElement.style.display = "block"; // Устанавливаем display на block
     }
 
     window.onInfoChange = onInfoChange;
