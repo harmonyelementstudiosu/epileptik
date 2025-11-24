@@ -382,8 +382,8 @@ body #app .hud-radmir-info {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  border-radius: 1.1; 
-  border: 0.50vh solid #000000b3 !important;
+  border-radius: 1.1vh; 
+  border: 0.60vh solid #000000b3 !important;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 1);
 }
 
@@ -541,18 +541,18 @@ body #app .hud-radmir-radar__map {
 
 #app .death { 
   font-style: italic; 
-  background: #000000 !important;
-  border: 1px solid #333333;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0) !important;
+  border: 1px solid rgba(0, 0, 0, 0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0);
   position: relative;
   border-radius: 0;
 } 
 
 #app .death-timer { 
   font-style: italic;
-  background: #000000 !important;
-  border: 1px solid #333333;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0) !important;
+  border: 1px solid rgba(51, 51, 51, 0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0);
   position: relative;
   border-radius: 0;
 } 
