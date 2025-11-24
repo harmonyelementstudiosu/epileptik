@@ -405,20 +405,21 @@ body #app .hud-radmir-info {
   border-radius: 0; 
   border: none !important;
   /* Внешняя обводка (outline) */
-  outline: 25px solid #000000ff; /* Цвет и толщина внешней обводки */
-  outline-offset: 2px; /* Отступ внешней обводки от края элемента */
+  outline: 25px solid #000000ff;
+  outline-offset: 2px;
   /* Внутренняя тень, имитирующая внутреннюю обводку */
   box-shadow: 
-    0 0px 25px rgba(0, 0, 0, 1), /* Ваша текущая тень */
-    inset 0 0 0 7px #000000ff; /* Внутренняя обводка (цвет и толщина) */
+    0 0px 25px rgba(0, 0, 0, 1),
+    inset 0 0 0 7px #000000ff;
 }
+
 body #app .hud-radmir-radar__map { 
-  transition: .3s 
+  transition: .3s;
 }
 
 #app .hud-hassle-map { 
   width: 38.4vh !important; 
-  height: 38.4vh !important 
+  height: 38.4vh !important;
 }
 
 #app .hud-radmir-radar__radar { 
@@ -428,8 +429,8 @@ body #app .hud-radmir-radar__map {
 }
 
 #app .hud-radmir-radar { 
-  right: 142.2vh; /* Смещение вправо */
-  left: auto; /* Отмена предыдущего смещения влево */
+  right: 142.2vh;
+  left: auto;
 }
       body .OLD-RADMIR-logo__bonus {
     background: #000000c5
