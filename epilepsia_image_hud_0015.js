@@ -330,8 +330,8 @@ body #app .hud-radmir-info {
 
 .Old-Fixed-Wanted_back {
    position: absolute;
-   right: -0.5vh;
-   top: 0.2vh;
+   left: 10vh; /* Смещение влево (уменьшите значение для сдвига влево) */
+   top: 10vh; /* Смещение вниз (увеличьте значение для сдвига вниз) */
    z-index: -1;
 }
 
