@@ -354,10 +354,10 @@ body #app .hud-radmir-info {
       }
       .Old-Fixed-ZZ{
        position:absolute;
-       left:24.3vh; /* Исправлено: изменено значение left, если нужно */
-       bottom:2vh; /* Исправлено: изменено значение bottom */
-       display: block; /* Принудительно устанавливаем display: block */
-      }
+       left:24.3vh;
+       bottom:10vh; /* Поднимаем вверх (увеличили значение, чтобы элемент был ближе к верху) */
+       display: block;
+}
       .Old-Fixed-ZZ_icon{
        width:4.5vh;
        height:4.5vh
