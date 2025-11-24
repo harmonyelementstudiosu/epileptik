@@ -355,7 +355,7 @@ body #app .hud-radmir-info {
       .Old-Fixed-ZZ{
        position:absolute;
        left:24.3vh;
-       bottom:10vh; /* Поднимаем вверх (увеличили значение, чтобы элемент был ближе к верху) */
+       bottom:60vh; /* Поднимаем вверх (увеличили значение, чтобы элемент был ближе к верху) */
        display: block;
 }
       .Old-Fixed-ZZ_icon{
