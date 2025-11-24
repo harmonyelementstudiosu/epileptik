@@ -1145,7 +1145,7 @@ body .window-button {
 /* Стили для текстовых параметров над радаром */
 .hud-params-above-radar {
     position: absolute;
-    left: calc(7.2vh - 100px); /* Сдвиг влево (уменьшено значение на 20px) */
+    left: calc(7.2vh - 90px); /* Сдвиг влево (уменьшено значение на 20px) */
     top: calc(100vh - 20.9vh - 85px); /* Сдвиг вниз (уменьшено вычитаемое значение на 20px) */
     display: flex;
     flex-direction: row; /* Горизонтальное расположение */
