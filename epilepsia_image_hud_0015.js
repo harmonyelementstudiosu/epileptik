@@ -376,14 +376,14 @@ body #app .hud-radmir-info {
       }
         /*RADAR*/
 #app .hud-radmir-radar__map { 
-  width: 26.3vh !important;
-  height: 25.1vh !important;
+  width: 18.41vh !important; /* 26.3vh * 0.7 */
+  height: 17.57vh !important; /* 25.1vh * 0.7 */
   overflow: hidden; 
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  border-radius: 1.1vh; 
-  border: 0.60vh solid #000000b3 !important;
+  border-radius: 0.77vh; /* 1.1vh * 0.7 */
+  border: 0.42vh solid #000000b3 !important; /* 0.60vh * 0.7 */
   box-shadow: 0 0px 10px rgba(0, 0, 0, 1);
 }
 
@@ -392,12 +392,12 @@ body #app .hud-radmir-radar__map {
 }
 
 #app .hud-hassle-map { 
-  width: 38.4vh !important; 
-  height: 38.4vh !important;
+  width: 26.88vh !important; /* 38.4vh * 0.7 */
+  height: 26.88vh !important; /* 38.4vh * 0.7 */
 }
 
 #app .hud-radmir-radar__radar { 
-  width: 31.6vh;
+  width: 22.12vh; /* 31.6vh * 0.7 */
   border-radius: 0;
   box-shadow: none;
 }
