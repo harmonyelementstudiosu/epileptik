@@ -1006,25 +1006,25 @@ body .window-button {
 } 
 
 #app .inventory-container__slot:hover {
-  background: #333333;
+  background: #1a1a1a;
   border-color: #666666;
   box-shadow: 0 0 5px rgba(102, 102, 102, 0.3);
 }
 
 #app .inventory-container__slot:active {
-  background: #2a2a2a;
+  background: #1a1a1a;
   transform: scale(0.99);
 }
 
 #app .inventory-capacity__bar__fill, 
 #app .inventory-wear__bar__fill { 
   border-radius: 1vh; 
-  background: #666666;
+  background: #1a1a1a;
 } 
 
 #app .inventory-capacity__bar, 
 #app .inventory-wear__bar { 
-  background: #2a2a2a;
+  background: #1a1a1a;
   border-radius: 1vh; 
   width: 100%; 
   left: 1.5vh; 
@@ -1086,13 +1086,13 @@ body .window-button {
 #app .player-interaction__container,
 #app .player-interaction-layer {
   background: rgba(0, 0, 0, 0.9);
-  border: 1px solid #494949b9;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  border: 1px solid #ffffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
 }
 
 #app .player-interaction__inner {
   background: rgba(0, 0, 0, 0.9) !important;
-  border: 1px solid #494949b9;
+  border: 1px solid #ffffffff;
 }
 
 #app .player-interaction__icon,
