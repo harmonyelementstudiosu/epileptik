@@ -376,14 +376,14 @@ body #app .hud-radmir-info {
       }
         /*RADAR*/
 #app .hud-radmir-radar__map { 
-  width: 18.41vh !important; /* 26.3vh * 0.7 */
-  height: 17.57vh !important; /* 25.1vh * 0.7 */
+  width: 30vh !important; /* Увеличена ширина для прямоугольной формы */
+  height: 17.57vh !important; /* Высота оставлена как есть (уменьшенная на 30%) */
   overflow: hidden; 
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  border-radius: 0.77vh; /* 1.1vh * 0.7 */
-  border: 0.42vh solid #000000b3 !important; /* 0.60vh * 0.7 */
+  border-radius: 0.77vh; /* Сохранён пропорциональный радиус */
+  border: 0.42vh solid #000000b3 !important;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 1);
 }
 
@@ -392,12 +392,12 @@ body #app .hud-radmir-radar__map {
 }
 
 #app .hud-hassle-map { 
-  width: 26.88vh !important; /* 38.4vh * 0.7 */
-  height: 26.88vh !important; /* 38.4vh * 0.7 */
+  width: 40vh !important; /* Пропорционально увеличена ширина */
+  height: 26.88vh !important; /* Высота оставлена как есть */
 }
 
 #app .hud-radmir-radar__radar { 
-  width: 22.12vh; /* 31.6vh * 0.7 */
+  width: 34vh; /* Пропорционально увеличена ширина */
   border-radius: 0;
   box-shadow: none;
 }
@@ -405,8 +405,8 @@ body #app .hud-radmir-radar__map {
 #app .hud-radmir-radar { 
   /* Смещение влево и вниз */
   right: auto; /* Отменяем предыдущее значение */
-  left: -3.3vh; /* Смещение влево (увеличьте значение для большего сдвига влево) */
-  top: 72vh; /* Смещение вниз (увеличьте значение для сдвига вниз) */
+  left: -3.5vh; /* Сохранено текущее смещение влево */
+  top: 72vh; /* Сохранено текущее смещение вниз */
   /* или используйте bottom вместо top, если отсчёт ведётся снизу */
   /* bottom: 10vh; */
 }
