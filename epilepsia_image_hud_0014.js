@@ -403,14 +403,9 @@ body #app .hud-radmir-info {
   justify-content: center; 
   align-items: center; 
   border-radius: 0; 
-  border: none !important;
-  /* Внешняя обводка (outline) */
-  outline: 25px solid #000000ff;
-  outline-offset: 2px;
-  /* Внутренняя тень, имитирующая внутреннюю обводку */
-  box-shadow: 
-    0 0px 25px rgba(0, 0, 0, 1),
-    inset 0 0 0 7px #000000ff;
+  border: 0.35vh solid #000000b3 !important;
+  outline: none;
+  box-shadow: none;
 }
 
 body #app .hud-radmir-radar__map { 
@@ -1172,7 +1167,7 @@ body .window-button {
     flex-direction: row; /* Горизонтальное расположение */
     gap: 20px; /* Расстояние между элементами */
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
+    background-color: #000000b3; /* Темный полупрозрачный фон */
     padding: 10px 15px;
     border-radius: 8px;
     font-family: "GothamPro Regular", Arial, sans-serif;
