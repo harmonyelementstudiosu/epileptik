@@ -1143,13 +1143,16 @@ body .window-button {
 }
 
   #app .capture-table {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%); /* Черно-серый градиент */
-    box-shadow: 0 0 5vh 0 rgba(0, 0, 0, 0.3); /* Теневая подсветка */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    box-shadow: 0 0 5vh 0 rgba(0, 0, 0, 0.3);
     border-radius: 1vh;
-    transform: scale(.9);
     padding: 1.5vh 1.8vh;
-    position: relative;
+    position: fixed; /* Или absolute, если позиционирование нужно относительно #app */
+    bottom: 2vh; /* Отступ от нижнего края экрана */
+    left: 50%;
+    transform: translateX(-50%) scale(0.9); /* Центрируем и сохраняем масштаб */
     overflow: hidden;
+    z-index: 1000; /* Убедитесь, что элемент поверх других, при необходимости */
 }
 
 #app .capture-table::before {
@@ -1167,8 +1170,8 @@ body .window-button {
 #app .capture-table__col-kills,
 #app .capture-table__col-kills.my,
 #app .capture-table__timer {
-    background: linear-gradient(145deg, #4a4a4a 0%, #666666 50%, #4a4a4a 100%); /* Серый градиент */
-    color: #e0e0e0; /* Светло-серый текст */
+    background: linear-gradient(145deg, #4a4a4a 0%, #666666 50%, #4a4a4a 100%);
+    color: #e0e0e0;
     font-style: normal;
     font-weight: 900;
     font-size: 1.8vh;
@@ -1207,20 +1210,20 @@ body .window-button {
     font-style: normal;
     font-weight: 700;
     text-transform: none;
-    color: #e0e0e0 !important; /* Светло-серый текст */
+    color: #e0e0e0 !important;
 }
 
 #app .capture-table__col-kills.my {
     margin-right: 1.3vh;
     margin-left: 0 !important;
-    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important; /* Темно-серый градиент для своего */
-    color: #ffffff !important; /* Белый текст */
+    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important;
+    color: #ffffff !important;
 }
 
 #app .capture-table__col-kills {
     margin-left: 1.3vh;
-    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important; /* Темно-серый градиент */
-    color: #ffffff !important; /* Белый текст */
+    background: linear-gradient(145deg, #3a3a3a 0%, #555555 50%, #3a3a3a 100%) !important;
+    color: #ffffff !important;
 }
 .OLD-RADMIR-green-zone__main {
     position: absolute;
