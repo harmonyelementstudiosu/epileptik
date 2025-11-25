@@ -375,16 +375,27 @@ body #app .hud-radmir-info { display: none; }
     margin-right: 6vh;
     margin-top: -1.6vh;
 }
+
 .Old-Fixed-Wanted_back {
     position: absolute;
     right: -1.2vh;
-    top: -.66vh;
+    top: -0.66vh;
     z-index: -1;
 }
+
+.Wanted_row {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    /* При необходимости можно добавить gap для равномерного интервала */
+    /* gap: 0.3vh; */
+}
+
 .Wanted_row img {
     width: 2.3vh;
     height: 2.3vh;
-    padding: .19vh .28vh;
+    padding: 0.19vh 0.28vh;
+    /* box-sizing: border-box; — если padding влияет на выравнивание */
 }
 .Old-Fixed-HudBottom {
     transform-origin: right bottom;
