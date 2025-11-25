@@ -346,7 +346,7 @@ body #app .hud-radmir-info { display: none; }
     box-shadow: #ed2e2e80 0 0 .46vh 0;
 }
 .Old-Fixed-Param.armour .Old-Progress__Values {
-    background-color: #000000;
+    background-color: #526ee6;
     box-shadow: #526ee680 0 0 .46vh 0;
 }
 .Old-Fixed-Param.hunger .Old-Progress__Values {
@@ -536,6 +536,9 @@ body #app .hud-radmir-info { display: none; }
         hudElements.push(hudElement);
     }
 
+    // Флаг для отслеживания первого обновления брони
+    let armourUpdatedOnce = false;
+
     const updateFunctions = {
         show: (value) => {
             const hudEl = document.querySelector(".Old-Fixed-Hud");
@@ -561,7 +564,11 @@ body #app .hud-radmir-info { display: none; }
             updateParam("health", value);
         },
         armour: (value) => {
-            updateParam("armour", value);
+            // Обновляем броню только один раз после загрузки
+            if (!armourUpdatedOnce) {
+                updateParam("armour", value);
+                armourUpdatedOnce = true;
+            }
         },
         hunger: (value) => {
             updateParam("hunger", value);
@@ -688,15 +695,6 @@ body #app .hud-radmir-info { display: none; }
                 clearInterval(checkInterval);
                 const hudInfo = window.interface("Hud").info;
                 const clonedHudInfo = JSON.parse(JSON.stringify(hudInfo));
-                
-                // Инициализация начальных значений для параметров, требующих обновления
-                if (clonedHudInfo.armour !== undefined) {
-                    updateFunctions.armour(clonedHudInfo.armour);
-                }
-                if (clonedHudInfo.wanted !== undefined) {
-                    updateFunctions.wanted(clonedHudInfo.wanted);
-                }
-                
                 window.interface("Hud").info = new Proxy(clonedHudInfo, {
                     set(target, prop, value) {
                         if (target[prop] !== value) {
@@ -749,7 +747,7 @@ AddHud();
     const customZone = document.createElement('div');
 customZone.className = 'Old-Fixed-ZZ';
 customZone.innerHTML = `
-    <img src="data:image/png;base64,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" 
+    <img src="data:image/png;base64,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" 
          style="width: 3.5vh; height: 4.5vh;">
 `;
 customZone.style.cssText = `
