@@ -333,7 +333,7 @@ body #app .hud-radmir-info { display: none; }
     text-shadow: 0 0 2vh #000;
 }
 .Old-Fixed-Param.hunger {
-    margin-left: .65vh;
+    margin-left: .45vh;
 }
 .Old-Fixed-Param.breath {
     margin-left: 3px;
