@@ -190,8 +190,8 @@ body #app .hud-radmir-info { display: none; }
     margin-bottom: 3vh;
 }
 .Old-Fixed-Logo img {
-    width: 20.52vh;
-    height: 6.2vh;
+    width: 27.0864vh; /* 20.52vh * 1.32 */
+    height: 8.184vh;  /* 6.2vh * 1.32 */
     margin-right: 2vh;
 }
 .Old-Fixed-Bonus{
@@ -333,7 +333,7 @@ body #app .hud-radmir-info { display: none; }
     text-shadow: 0 0 2vh #000;
 }
 .Old-Fixed-Param.hunger {
-    margin-left: .35vh;
+    margin-left: .25vh;
 }
 .Old-Fixed-Param.breath {
     margin-left: 3px;
