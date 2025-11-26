@@ -336,7 +336,7 @@ body #app .hud-radmir-info { display: none; }
     margin-left: .09vh;
 }
 .Old-Fixed-Param.breath {
-    margin-left: 3px;
+    margin-left: 4px;
     display: none;
 }
 .Old-Fixed-Param.health .Old-Progress__Values {
@@ -357,7 +357,10 @@ body #app .hud-radmir-info { display: none; }
     background-color: #fff;
     box-shadow: rgba(255, 255, 255, .5) 0 0 5px 0;
 }
-.old-param.health .old-param__icon { width: 1.4vh; height: 1.2vh; }
+.old-param.health .old-param__icon {
+    width: 1.4vh;
+    height: 1.8vh; /* 1.2vh * 1.5 */
+}
       .old-param.armour .old-param__icon { width: 1.4vh; height: 1.4vh; }
       .old-param.hunger .old-param__icon { width: .9vh; height: 1.4vh; }
        position: relative;
