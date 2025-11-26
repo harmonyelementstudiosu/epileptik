@@ -292,7 +292,7 @@ body #app .hud-radmir-info { display: none; }
 }
 .Old-Fixed-Param.health {
     margin-top: 0;
-    margin-left: 1.35vh;
+    margin-left: 1.25vh;
 }
 .Old-Fixed-Param.armour, .Old-Param-Values {
     margin-left: .93vh;
