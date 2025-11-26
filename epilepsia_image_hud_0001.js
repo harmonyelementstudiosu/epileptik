@@ -288,7 +288,7 @@ body #app .hud-radmir-info { display: none; }
 .Old-Fixed-Param {
     display: flex;
     align-items: center;
-    margin-top: .95vh;
+    margin-top: .75vh;
 }
 .Old-Fixed-Param.health {
     margin-top: 0;
